@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            width: 300px; /* 고정 넓이 */
+            height: 100px; /* 고정 높이 */
+            background-color: blue;
+        }
+
+        #box2 {
+            width: 50%; /* 가변 넓이. 현재 브라우저 창 너비의 50%를 유지 */
+            height: 100px; /* 고정 높이 */
+            background-color: green;
+        }
+
+        /*
+        * 넓이 width, 높이 height 속성
+        박스 모델에서 콘텐츠 영역의 크기를 지정할 때 넓이와 높이 속성을 지정
+
+        * 스타일 속성에 대한 형식
+        넓이 / width : 크기 | 백분율 | auto
+        높이 / height: 크기 | 백분율 | auto
+
+        * 속성에 대한 설명
+        크기 : 넓이나 높이를 px 형태의 단위로 지정
+        백분율 : 부모 박스 기준으로 %로 지정
+        auto : 콘텐츠 양에 따라 자동으로 결정
+        */
+    </style>
+</head>
+<body>
+    <div class="box1">BOX-1</div>
+    <div id="box2">BOX-2</div>
+</body>
+</html>
