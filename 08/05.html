@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        div {
+            width: 200px;
+            height: 100px;
+            border: 2px solid black;
+            background-color: orange;
+            text-align: center; /* 수평 중앙 정렬 */
+        }
+
+        /*
+        수직 중앙 정렬에 사용되는 방법 3가지
+        case1. line-height로 부모 박스의 높이를 지정.
+        case2. display의 table-cell 속성 적용 후 vertical-align 사용
+        case3. position이 absolute 일 경우 top:50; transform: translateY(-50%); 적용
+         */
+        div.line-height {
+            line-height: 100px; /* 높이를 line-height로 사용 */
+            /*  div 태그 박스의 높이와 동일하게 주면됨. 일종의 편법  공식은 아님 */
+        }
+
+        div.cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        div.rel {
+            position: relative;
+        }
+
+        div.rel p {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+<div class="line-height">vertical-align</div>
+<div class="cell">vertical-align</div>
+<div class="rel"><p>vertical-align</p></div>
+<!-- line-height를 사용할 경우에는 요소가 한줄이어야 함-->
+<div class="line-height">vertical-align vertical-align vertical-align</div>
+</body>
+</html>
