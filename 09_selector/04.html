@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+            아래 html 태그 구조는 복잡한데 클래스나 아이디가 적어서 요소를 선택하기가 어려움.
+
+            * 후손 선택자
+            부모 선택자 안에 들어있는 모든 자식 선택자. 후손 선택자의 표기는 공백으로 표현.
+            형태 : 선택자A 선택자B : 선택자 A의 자손에 위치하는 B를 선택
+
+            * 후손 선택자
+            부모 선택자 안에 들어 있는 모든 자식 선택자. 후손 선택자의 표기는 공백으로 표현.
+            형태 : 선택자A 선택자B : 선택자 A의 후손에 위치하는 B를 선택
+         */
+        div > h1 { /* 자손 선택자 */
+            background-color: blue;
+        }
+
+        /*div > h2 { background-color: pink}*/
+        div h1 { /* 후손 선택자 */
+            background-color: blue;
+        }
+
+        div span { /* 후손 개념의 div 아래에 있는 모든 span */
+            background-color: yellow;
+        }
+
+        div > span { /* 자손 개념의 div 바로 아래에 있는 span */
+            border: 4px solid blue;
+        }
+        .point span {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <h1>제목1</h1>
+    <h2>제목2</h2>
+    <div>
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li><span>menu3</span></li>
+        </ul>
+    </div>
+    <h2>제목2</h2>
+    <span>span</span>
+    <ul class="point">
+        <li>menu4</li>
+        <li>menu5</li>
+        <li><span>menu6</span></li>
+    </ul>
+</div>
+</body>
+</html>
