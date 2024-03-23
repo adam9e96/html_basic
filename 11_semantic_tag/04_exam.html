@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
+    <style>
+        #top {
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+        }
+
+        #top ul {
+            background: cadetblue url("img/0320-1.jpg");
+            width: 750px;
+            height: 500px;
+            float: left;
+        }
+
+        #top > ul:nth-child(1) > li {
+            width: 250px;
+            height: 250px;
+            float: left;
+            margin-top: 250px;
+            padding: 15px;
+        }
+
+        #top > ul:nth-child(2) {
+            box-sizing: border-box;
+            width: 250px;
+            height: 250px;
+            background-color: #0099FF;
+            float: left;
+        }
+
+        #box_all {
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+        }
+
+        #box_all > ul:nth-child(1) > li {
+            width: 250px;
+            height: 500px;
+            float: right;
+            box-sizing: border-box;
+            background-color: #dfdf6b;
+            display: inline;
+            padding: 20px;
+        }
+
+        #box_all > ul:nth-child(2) > li {
+            width: 250px;
+            height: 250px;
+            float: left;
+            box-sizing: border-box;
+            display: inline;
+        }
+
+
+        #box_all > ul:nth-child(2) > li:nth-child(2n+1) {
+            padding: 20px;
+            background-color: #d12e35;
+            color: white;
+        }
+
+        #box_all > ul:nth-child(2) > li:nth-child(2n) {
+            padding: 20px;
+            background-color: #e3c65c;
+        }
+
+        #footer {
+            margin: 0 auto;
+            width: 1000px;
+            height: 40px;
+        }
+        #footer > ul {
+            width: 750px;
+            height: 40px;
+            box-sizing: border-box;
+            float: left;
+            background-color: #868099;
+        }
+        #footer > ul > li{
+            display: inline;
+        }
+        #footer > ul > li a {
+            margin: 6pt;
+            text-align: center;
+            color: white;
+        }
+        #footer > select {
+            text-align: center;
+            float: right;
+            color: white;
+            background-color: #0099FF;
+            box-sizing: border-box;
+        }
+        #footer > ul > li {
+            color: pink;
+        }
+
+        #footer > div > select {
+            width: 250px;
+            height:40px;
+            color: white;
+            text-align: center;
+            float: right;
+            box-sizing: border-box;
+            background-color: #464b5f;
+        }
+    </style>
+</head>
+
+<body>
+<div id="top">
+    <ul>
+        <li>
+            <h3>GLOBAL <br> BUSINESS</h3>
+            <p>GLOBAL No.1 lifestyle Media Shopping Leader <br>라이프스타일을 선도하는 세계최<br>고의 미디어 쇼핑리더</p>
+        </li>
+    </ul>
+    <ul>
+        <li><img src="img/0320-2.jpg" alt="img/0320-2"></li>
+        <li><img src="img/0320-3.jpg" alt="img/0320-3"></li>
+    </ul>
+</div>
+
+<div id="box_all">
+    <ul>
+        <li>7</li>
+    </ul>
+    <ul>
+        <li>
+            <h3>CSV</h3>
+            <p><br>상생이념을 통해 함께 성장하고 사회에 공헌하는 CSV프로그램과 활동소식을 안내합니다.</p>
+        </li>
+        <li>
+            <h3>입점안내</h3>
+            <p><br>고객에게 늘 새롭고 Trendy한 제안을 하는 CJ O Shopping을 힘찬 도약을 함께 할 동반자를 찾습니다.</p>
+        </li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</div>
+
+<div id="footer">
+    <ul>
+        <li><a href="#">법적고지</a></li>
+        <li>ㅣ</li>
+        <li><a href="#">이메일무단수집거주</a></li>
+        <li>ㅣ</li>
+        <li><a href="#">이용약관</a></li>
+        <li>ㅣ</li>
+        <li><a href="#">개인정보취급방침</a></li>
+        <li>ㅣ</li>
+        <li><a href="#">고객센터</a></li>
+        <li>ㅣ</li>
+        <li><a href="#">입찰공고</a></li>
+    </ul>
+    <div>
+    <select>
+        <option value="H">cj그룹계열서버로가기</option>
+    </select>
+    </div>
+</div>
+
+</body>
+</html>

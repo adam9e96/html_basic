@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form name="frmPost" action="action.php" method="post">
+        <label>비밀번호</label>
+        <input type="password" name="password">
+        <input type="button" value="비밀번호 보기">
+
+        <input type="submit" value="전송">
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const btn = document.querySelector('input[type=button]');
+            btn.addEventListener('click', function () {
+                const pass = document.querySelector('input[name=password]');
+                if (pass.type === 'password') {
+                    pass.setAttribute('type', 'text');
+                    btn.setAttribute('value', '비밀번호 감추기');
+                } else {
+                    pass.setAttribute('type', 'password');
+                    btn.setAttribute('value', '비밀번호 보기');
+                }
+            })
+        })
+    </script>
+</body>
+</html>

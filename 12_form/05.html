@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+* form : 여러 입력 양식을 그룹화하고 전송.
+
+form 을 만들고 사용자 화면을 구성하는 영역은 프런트엔드 영역에서 담당
+form 을 통해 전달 받은 데이터를 가공하는 일은 백엔드 영역에서 처리
+
+action : 특정 주소값이나 파일 위치. 폼 데이터가 전송되는 곳
+input 을 통해 입력한 데이터가 action의 주소로 전송됨
+
+method : 폼을 서버로 전송할 때 http 메소드를 지정(=전송방식)
+ - get : 주소표시줄에 사용자가 입력한 내용이 그대로 표시 : 보안이 위험
+- post : 대부분이 사용하는 방식, 내부적으로 보이지 않게 전송
+
+   get 사용시
+   http://fpkm9999.dothome.co.kr/11_semantic_tag/action.php?memberId=test&password=22222
+   주소창에 아이디 비번이 떠버림
+   네이버나 쇼핑몰의 검색엔진등의 경우 get 방식을 사용함
+   이것들은 개인정보가 아니라서 노출되도 상관X
+
+   post 사용시
+   http://fpkm9999.dothome.co.kr/11_semantic_tag/action.php
+   개인정보가 들어 있는 아이디나 비번 등에서 post 방식을 사용
+
+   type="reset" : 기존에 입력한 모든 값을 비우는 초기화 버튼
+   type="submit" : 사용자가 폼에 입력한 모든 데이터를 서버에 전송하는 버튼
+
+   input : type="속성" name="이름(서버에서 사용하는 이름) 필수" id="css나 자바스크립트에서 제어할 때 사용"
+   > 실제 서버로 전송할 때 필요한건 name임
+   -->
+
+<form action="action.php" method="post">
+    <label for="mId">아이디</label>
+    <input type="text" name="memberId" id="mId"/>
+
+    <label for="pwd">비밀번호</label>
+    <input type="password" name="password" id="pwd"/>
+
+    <input type="reset">
+    <input type="submit">
+</form>
+<br><br>
+<form action="action.php" method="get">
+    <input type="search" name="search">
+    <!-- value 값을 주지않으면 브라우저별로 이름이 다르게 나올 수 있음.    -->
+
+    <input type="submit" value="검색"/>
+</form>
+</body>
+</html>
