@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        input[type=text], input[type=password] {
+            width: 200px;
+            height: 20px;
+            border: 2px solid;
+            border-radius: 4px;
+        }
+        input[type=color]{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <label for="memberID">아이디 </label><input type="text" name="memberID" id="memberID" required/>
+    <label for="password">비밀번호 </label><input type="password" name="password" id="password" required>
+    <button type="submit" value="로그인">로그인</button>
+</form>
+<form action="/login" method="POST">
+    <label for="username">사용자 이름 </label>
+    <input type="text" id="username" name="username" required>
+    <label for="password2">사용자 비번 </label>
+    <input type="password" id="password2" name="password" required>
+    <button type="submit">로그인</button>
+</form>
+<form>
+    <input type="checkbox" name="gender" id="gender_man" checked="checked">
+    <label for="gender_man">남</label>
+    <input type="checkbox" name="gender" id="gender_girl">
+    <label for="gender_girl">여</label>
+    <input type="checkbox" name="gender" id="gender_less">
+    <label for="gender_less">무</label>
+    <input type="submit" value="제출ㅇㅇ">
+
+    <!--    <select name="fruit">-->
+    <!--    <option value="apple">사과</option>-->
+    <!--    <option value="banana">바나나</option>-->
+    <!--    <option value="cherry">체리</option>-->
+    <!--</select>-->
+</form>
+
+<form>
+    <label for="free">백수</label>
+    <input type="radio" name="job" value="백수" id="free" checked="checked">
+    <label for="student">학생</label>
+    <input type="radio" name="job" value="student" id="student">
+    <label for="worker">직장인</label>
+    <input type="radio" name="job" value="worker" id="worker">
+    <input type="submit" value="전송">
+</form>
+<form>
+    <label for="color">원하는 컬러 선택</label><input type="color" name="color" id="color">
+    <input type="submit" value="전송">
+</form>
+<form>
+    <label>메모
+        <textarea name="contents">여기 다 적으면 됨</textarea>
+    </label>
+    <textarea name="contents2" cols="60" rows="18"></textarea>
+    <input type="submit" value="전송">
+</form>
+<form>
+    <label> 원하는 고름 선택
+        <select multiple name="고름선택">
+            <option value="R">랄로</option>
+            <option value="P">파카</option>
+            <option value="M">괴물쥐</option>
+            <option value="F">피닉스박</option>
+        </select>
+    </label>
+    <input type="submit" value="전송ㅇㅇ">
+</form>
+</body>
+</html>
