@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 300px;
+            border-collapse: collapse;
+            /*border-color: white;*/
+            border-top: 2px solid pink;
+            margin: 40px auto;
+        }
+
+        th {
+            background-color: grey;
+        }
+
+        td, th {
+            width: 100px;
+            height: 50px;
+            border: 1px #464b5f solid;
+            text-align: center;
+        }
+
+        tr td:nth-child(3), tr th:nth-child(3) {
+            border-right: none;
+        }
+
+        tr td:nth-child(1), tr th:nth-child(1) {
+            border-left: none;
+        }
+
+        /*tr:nth-child(n) > td:nth-child(1) {*/
+        /*    border-left: none;*/
+        /*}*/
+
+        /*tr > th:nth-child(3) {*/
+        /*    border-right: none;*/
+        /*}*/
+
+        /*tr > th:nth-child(1) {*/
+        /*    border-right: none;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<!--<div class="main">-->
+
+<table>
+    <caption></caption>
+    <thead>
+    <tr>
+        <th>tit1</th>
+        <th>tit2</th>
+        <th>tit3</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td>01</td>
+        <td>02</td>
+        <td>03</td>
+    </tr>
+    <tr>
+        <td>04</td>
+        <td>05</td>
+        <td>06</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<!--</div>-->
+</body>
+</html>

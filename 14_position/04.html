@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+            * relative : 상대 좌표와 함께 위치를 지정 (상대위치 지정방식)
+            태그가 만들어진 순서대로 나열
+            다른 박스에 영향을 주며 작성한 순서대로 나열 (위치지정가능)
+            ** 부모박스의 역할로 주로 사용
+            top, left의 영향을 받음.
+         */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            border: 4px solid black;
+            margin-left: 30px;
+            font-size: 30px;
+            line-height: 300px;
+            text-align: center;
+
+            position: relative; /* 상대 좌표 */
+            left : 100px; /* 좌표 인식이 가능 */
+            top: 100px; /* 좌표 인식이 가능 */
+        }
+    </style>
+</head>
+<body>
+<div>relative-1</div>
+<div>relative-2</div>
+<div>relative-3</div>
+</body>
+</html>

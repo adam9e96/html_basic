@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*
+        absolute 일반적인 사용 방법
+        1. 부모 요소를 relative로 지정한다.
+        2. 부모 요소의 높이를 지정해서 자식 요소를 감싸주게 한다.
+         */
+        .movie { /* 부모 박스 요소 */
+            width: 700px;
+            height: 500px;
+            border: 2px solid gray;
+            background-color: darkslateblue;
+
+            position: relative; /* 상대 좌표 */
+        }
+
+        /* 자식 박스 요소  */
+        /* 버튼 */
+        .movie div {
+            width: 120px;
+            height: 120px;
+            border: none;
+            border-radius: 120px;
+            line-height: 120px;
+            background-color: antiquewhite;
+            text-align: center;
+            font-size: 30px;
+            position: absolute;
+        }
+        .prev {
+            top: 50%;   /* top으로의 위치 */
+            left: 10px; /* left로의 위치 */
+        }
+        .play {
+            top: 50%;
+            right: 50%;
+        }
+        .next {
+            top: 50%;
+            left: 60%;
+        }
+        /* 박스의 윗면 기준으로 50%라 보정을 해줘야함 원반지름을 빼야함   */
+    </style>
+</head>
+<body>
+
+<!-- 부모 요소 relative -->
+<div class="movie">
+    <!-- 자식 요소 absolute -->
+    <div class="prev">PREV</div>
+    <div class="play">▶</div>
+    <div class="next">NEXT</div>
+</div>
+
+</body>
+</html>
