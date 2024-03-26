@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            border: 2px solid red;
+        }
+
+        .item {
+            padding: 10px;
+            margin: 10px;
+            background: #0bd;
+            color: #fff;
+        }
+
+        /*
+         * align-content : 여러 줄이 될 떄의 맞춤
+         * 자식 요소가 여러 줄이 됐을 때의 수직 방향 맞춤을 지정
+
+         flex-wrap : nowrap 이 적용이 되어 있다면 자식 요소가 한 줄이 되므로 align-content 속성이 아무 의미가 없음.
+
+
+            align-content: flex-start; : 부모 요소의 윗부분에 맞춰 배치
+            align-content: flex-end; : 부모 요소의 아랫부분에 맞춰 배치
+            align-content: center; : 중앙에 배치
+            align-content: space-between; : 위아래 끝에 있는 요소를 끝에 붙이고, 남은 부분들은 균등한 공간을 형성한 상태로 배치
+            align-content: space-around; :  위아래 끝에 있는 여백도 포함해서 균등한 공간을 형성한 상태로 배치
+            align-content: space-evenly; :  항목들 간에 동일한 간격
+            align-content: stretch : 부모 요소의 높이에 맞게 자식 요소의 높이를 늘여서 배치
+
+
+         */
+        #container {
+            width: 400px;
+            height: 300px;
+
+            display: flex;
+            flex-wrap: wrap;
+            align-content: stretch;
+        }
+
+        .item:nth-child(2) {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<!--ex02 이후 -->
+<div id="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+    <div class="item">Item 6</div>
+    <div class="item">Item 7</div>
+    <div class="item">Item 8</div>
+    <div class="item">Item 9</div>
+    <div class="item">Item 10</div>
+    <div class="item">Item 11</div>
+    <div class="item">Item 12</div>
+</div>
+</body>
+</html>

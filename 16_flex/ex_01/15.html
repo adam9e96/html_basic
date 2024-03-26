@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="./css/reset.css" rel="stylesheet">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+        body > h1, body > nav, body > section {
+            width: 1600px;
+            margin: 0 auto;
+        }
+        body > h1 {
+            /*height: 100px; !* 높이를 지정해서 레이아웃 영역 확인 *!*/
+            font-family: "IBM Plex Sans", sans-serif;
+            /*background: #cccccc;*/
+            text-align: center;
+            padding: 5px;
+        }
+        body > nav {
+            height: 100px; /* 높이를 지정해서 레이아웃 영역 확인 */
+            background: #f1e4b2;
+        }
+        body > section {
+            height: 100px; /* 높이를 지정해서 레이아웃 영역 확인 */
+            background: skyblue;
+        }
+        h1 {
+        }
+    </style>
+</head>
+<body>
+<!--
+1. reset.css 파일 생성.
+2. 이미지 사이즈로 부터 넓이가 1600px 확인
+3. 로고는 <h1>, 네비게이션은 <nav>, 본문은 <section>으로 전체 레이아웃 작업.
+4. 전체 레이아웃에 css 적용, 임시로 배경과 높이를 지정해 레이아웃이 틀린 것이 없는지 확인
+-->
+<!--
+로고 작업
+
+1. 웹 폰트 작업
+2. h1 태그에 속성 부여
+-->
+<h1>Alfredo<br>gonzales</h1>
+<nav></nav>
+<style>
+    body > section:nth-of-type(1) {
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        background: none;
+    }
+</style>
+<section>
+<div><img src="../img/header01.jpg" alt="대체 이미지"/></div>
+    <div class="right">
+        <img src="../img/side01.jpg" alt="대체 이미지"/>
+        <div>
+            <span>DESIGN YOUR OWN SOCK</span>
+            <br>
+            <span>THE WORK SHOP</span>
+        </div>
+        <div>
+            <span>SELF SERVICE</span>
+            <br>
+            <span>ONLINE STORE</span>
+        </div>
+    </div>
+</section>
+<style>
+    body > section:nth-of-type(2){
+        margin-top: 10px;
+        background: none;
+        height: auto;
+    }
+</style>
+<section>
+    <img src="../img/banner_03.jpg" alt="대체 이미지"/></section>
+<section></section>
+</body>
+</html>

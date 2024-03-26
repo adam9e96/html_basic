@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            border: 2px solid red;
+        }
+
+        .item {
+            padding: 10px;
+            margin: 10px;
+            background: #0bd;
+            color: #fff;
+        }
+        /*
+         * flex-wrap : 자식 요소를 줄 바꿈.
+         여러 줄로 지정할 경우에는 자식 요소가 부모 요소의 너비를 넘는 경우 줄바꿈에서 여러 줄로 배치
+        -> flex-direction: column 일 경우에는 적용이 안됨.
+
+         flex-wrap: nowrap : 자식 요소를 줄바꿈 하지 않고, 한 줄로 배치. 기본값
+         flex-wrap: wrap : 자식 요소를 줄바꿈. 여러 줄이 되면 위에서 아래로 배치
+         flex-wrap: wrap-reverse : 자식 요소를 줄바꿈. 여러 줄이 되면 아래에서  위로 배치
+         */
+
+        #container {
+            display: flex;
+            /*flex-direction: column;*/
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<!--ex02 이후 -->
+<div id="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+    <div class="item">Item 6</div>
+    <div class="item">Item 7</div>
+    <div class="item">Item 8</div>
+</div>
+</body>
+</html>

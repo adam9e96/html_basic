@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }ㅊ
+
+        body > div {
+            border: 2px solid red;
+            margin-bottom: 20px;
+        }
+
+        body > div > div {
+            width: 100px;
+            heightㅊ: 100px;
+            border: 2px solid;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- float, inline-block, flex 사용해서 요소를 수평으로 정렬하기 -->
+<h2>요소를 수평으로 정렬하기</h2>
+
+<h4>float 사용</h4>
+<style>
+
+    /* sol1.  */
+    body > div:nth-of-type(1) {
+        /* float 의 부모요소에 float의 사이즈 만큼 높이 지정 */
+        /*height: 104px*/
+    }
+
+    /* sol2.  */
+    body > div:nth-of-type(1)::after {
+        /* 가상 선택자를 이용해서 마지막에 block, clear:both 빈 박스 생성 */
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    body > div:nth-of-type(1) div {
+        float: left;
+    }
+</style>
+<div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+<h4>inline-block 사용</h4>
+<style>
+    body > div:nth-last-of-type(2) {
+        font-size: 0;
+    }
+
+    div:nth-child(7) > div:nth-child(n) {
+        display: inline-block;
+    }
+</style>
+<div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+<h4>flex 사용</h4>
+<style>
+    div:nth-child(10) {
+        display: flex;
+    }
+</style>
+<div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+</body>
+</html>

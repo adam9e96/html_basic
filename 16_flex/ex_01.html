@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*
+         * 추가 내용
+         1. 컨테이너에 flex 적용.
+         2. inline 요소도 flex가 적용되면 넓이와 높이를 가짐.
+         */
+        div {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #333333;
+            margin: 50px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        span {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <span>
+
+        </span>
+    </div>
+</body>
+</html>
