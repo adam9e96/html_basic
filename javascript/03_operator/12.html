@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #contents {
+            width: 450px;
+            margin: 0 auto;
+        }
+
+        #contents > img {
+            float: left;
+            margin-right: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding-top: 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li > label {
+            width: 80px;
+            float: left;
+            text-align: right;
+        }
+
+        input[type="text"] {
+            width: 110px;
+            padding: 5px 10px;
+            margin: 0 5px 0 10px;
+        }
+
+        li:nth-child(3) {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        #showResult {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<!-- 1단계 : 레이아웃 -->
+<div id="contents">
+<!--    <img src="./img/sale.png" alt="">-->
+    <ul>
+        <li>
+            <label for="oPrice">원래 가격</label>
+            <input type="text" id="oPrice">원
+        </li>
+        <li>
+            <label for="rate">할인율</label>
+            <input type="text" id="rate">%
+        </li>
+        <li>
+            <button onclick="showPrice()">할인 가격 계산하기</button>
+        </li>
+    </ul>
+    <div id="showResult"></div>
+</div>
+<!-- 2단계 : 프로토 타입 만들기 -->
+<script>
+    function showPrice() {
+        let originPrice = 10000;
+        let rate = 25;
+        document.querySelector('#showResult').innerHTML =
+            `상품의 원래 가격은 ${originPrice}원이고, 할인율은 ${rate}%입니다.`
+    }
+</script>
+</body>
+</html>

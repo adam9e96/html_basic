@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 비교 연산자
+         * a == b : a 와 b 가 같으면 true, 같지 않으면 false. 데이터 타입은 비교하지 않음.
+         * a === b : a와 b 가 같고 데이터 타입이 같으면 true, 같지 않으면 false. <- 자바스크립트에서 고급 기술
+         *
+         * a != b : a와 b가 같지 않으면 true, 같으면 false.
+         * a !== b : a 와 b가 같지 않거나 데이터 타입이 같지 않으면 true, 같으면 false.
+         */
+        const comparison1 = (5 > 2);
+        console.log(comparison1); //true
+
+        const comparison2 = (5 < 2);
+        console.log(comparison2); //false
+
+        const comparison3 = (5 == 5);
+        console.log(comparison3); //true
+
+        const comparison4 = (5 == '5');
+        console.log(comparison4); //true
+
+        const comparison5 = (5 === '5');
+        console.log(comparison5); //false
+
+        const comparison6 = (5 != '5');
+        console.log(comparison6); //false
+
+        const comparison7 = (5 !== '5');
+        console.log(comparison7); // true
+
+        const comparison8 = (5 === Number('5'));
+        console.log(comparison8); // true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

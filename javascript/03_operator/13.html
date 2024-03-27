@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #contents {
+            width: 450px;
+            margin: 0 auto;
+        }
+
+        #contents > img {
+            float: left;
+            margin-right: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding-top: 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li > label {
+            width: 80px;
+            float: left;
+            text-align: right;
+        }
+
+        input[type="text"] {
+            width: 110px;
+            padding: 5px 10px;
+            margin: 0 5px 0 10px;
+        }
+
+        li:nth-child(3) {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        #showResult {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<!-- 1단계 : 레이아웃 -->
+<div id="contents">
+    <img src="image/sale.png" alt=""/>
+    <ul>
+        <li>
+            <label for="oPrice">원래 가격</label>
+            <input type="text" id="oPrice">원
+        </li>
+        <li>
+            <label for="rate">할인율</label>
+            <input type="text" id="rate">%
+        </li>
+        <li>
+            <button  onclick="showPrice()">할인 가격 계산하기</button>
+        </li>
+    </ul>
+    <div id="showResult"></div>
+</div>
+<!-- 3단계 : 완성 -->
+<script>
+    /*
+     1. input 태그에서 값을 불러오기
+     2. 할인금액 계산하기 예) 1000원 25% 할인이면 2500원
+     3. 출력 문구 수정
+     예 ) 상품의 원래 가격은 10000원 이고, 할인율은 25% 입니다. 2500원을 절약한 7500원에 살 수 있습니다.
+     */
+    function showPrice() {
+        const originPrice = document.querySelector('#oPrice').value; // 원래 가격
+        const rate = document.querySelector('#rate').value; // 할인율
+        console.log(originPrice);
+        console.log(rate);
+
+        const savedPrice = originPrice * (rate * 0.01); // 할인 금액
+        console.log(savedPrice)
+        const resultPrice = originPrice - savedPrice; // 원래 가격에서 할인 금액을 뺀 최종 가격
+
+        document.querySelector('#showResult').innerHTML =
+            `상품의 원래 가격은 ${originPrice}원이고, 할인율은 ${rate}%입니다.<br>
+             ${savedPrice}원을 절약한 ${resultPrice}원에 살 수 있습니다.`
+    }
+</script>
+</body>
+</html>

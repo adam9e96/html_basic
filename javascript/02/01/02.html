@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .btn {
+            /* p , b , m 순*/
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-top: 50px;
+
+            background: grey;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: deepskyblue;
+        }
+
+        .show {
+            margin-top: 50px;
+            padding: 20px 30px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            /*background: grey;*/
+        }
+    </style>
+</head>
+<body>
+<button class="btn" onclick="calc()">나이 계산하기</button>
+<div id="result" class="show">(결과 값 표시)</div>
+<script>
+    function calc() {
+        const thisYear = 2024; // 올해 연도를 저장할 수 있는 변수
+        const birthYear = 1999; // 태어난 연도를 저장할 변수
+        let age; // 계산할 나이를 저장할 변수
+        age = thisYear - birthYear + 1;
+        document.querySelector('#result').innerHTML = "당신의 나이는 " + age + "세입니다.";
+    }
+
+    // 따로 반환형은 적지 않음 (파이썬과 유사)
+</script>
+</body>
+</html>

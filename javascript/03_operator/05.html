@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>증감 연산자</title>
+    <script>
+        /*
+         * 증감 연산자 : 복합 대입 연산자를 약간 간략하게 사용한 형태
+         *
+         * a++ : 기존의 변수 값에 1을 더함. 후위.
+         * ++a : 기존의 변수 값에 1을 더함. 전위.
+         * a-- : 기존의 변수 값에 1을 뺌. 후위.
+         * --a : 기존의 변수 값에 1을 뺌. 전위.
+         *
+         * C
+         * C++
+         * JAVA
+         */
+        let num1 = 10;
+        num1++; // 11 -> num+=1 -> num1 = num1 + 1;
+        document.write(num1); // 11
+        document.write('<br><br>');
+
+        // 후위 : 해당 문장을 실행한 후 값을 더함.
+        let num2 = 10;
+        document.write(num2++); // 10 document.write(num2); num2++; 가 한문장에 합쳐진거임
+        document.write('<br>'); // 11
+        document.write(num2++); // 11
+        document.write('<br>'); // 12
+        document.write(num2++); // 12
+        document.write('<br>'); // 13
+        document.write(num2); // 13
+        document.write('<br><br>'); // 13
+
+        // 아래와 같이 쓸 수 있음
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

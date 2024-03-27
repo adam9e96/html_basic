@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .btn {
+            /* p , b , m 순*/
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-top: 50px;
+
+            background: grey;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: deepskyblue;
+        }
+
+        .show {
+            margin-top: 50px;
+            padding: 20px 30px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            /*background: grey;*/
+        }
+    </style>
+</head>
+<body>
+<button class="btn" onclick="calc()">나이 계산하기</button>
+<div id="result" class="show">(결과 값 표시)</div>
+<script>
+    /*
+
+     수정 사항
+     1. thisYear 프로그램이 실행되는 시점의 연도를 가지고 오도록.
+     2. birthYear 을 사용자에게 입력을 받도록.
+     */
+    function calc() {
+        const now = new Date(); // 데이터 객체를 이용해 연도정보를 가져옴
+        // getFullYear : 4자리로된 현재 년도 정보를 가져오는 메소드
+        const thisYear = Number(now.getFullYear()); // 올해 연도를 저장할 수 있는 변수
+        // 제대로 받아오는지 테스트 콘솔찍기
+        console.log(thisYear);
+
+        const birthYear = Number(prompt('태어난 연도를 입력하세요.', 'YYYY')); // 태어난 연도를 저장할 변수
+        let age; // 계산할 나이를 저장할 변수
+        age = thisYear - birthYear + 1;
+        document.querySelector('#result').innerHTML = `당신의 나이는 ${age} 세입니다.`;
+    }
+
+    // 따로 반환형은 적지 않음 (파이썬과 유사)
+</script>
+</body>
+</html>
