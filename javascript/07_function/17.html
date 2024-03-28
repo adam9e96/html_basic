@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 기본적인 사용자 정의 함수 예제 : 윤년을 확인하는 함수
+         * 윤년의 조건 :
+         * 1) 4로 나누어 떨어지는 해는 윤년.
+         * 2) 하지만 100으로 나누어 떨어지는 해는 윤년이 아님.
+         * 3) 하지만 400으로 나누어 떨어지는 해는 윤년.
+         *
+         * 분석
+         * 매개변수 : 현재 년도
+         * 반환형 : 불린
+         */
+        // 윤년을 확인하는 함수를 정의 : 정수 연도를 입력 받아서 윤년의 여부를 불린형으로 반환.
+        const isLeapYear = function (year) { // 반환형이 bool형인 함수의 이름은 is로 시작하게 만듬
+            const isLeapYear = (year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0);
+            return isLeapYear;
+        };
+        console.log(`2020년은 윤년일까? === ${isLeapYear(2020)}`); // true . 4로 나누어 떨어짐 true && true || false
+        console.log(`2010년은 윤년일까? === ${isLeapYear(2010)}`); // false . 100으로 나누어 떨어지지 않음 false && false || false
+        console.log(`2000년은 윤년일까? === ${isLeapYear(2000)}`); // true . 400으로 나누어 떨어짐 true && true || true
+        console.log(`1900년은 윤년일까? === ${isLeapYear(1900)}`); // false . 4로 나누어 떨어짐 하지만 100으로 나누어 떨어짐 NOT 윤년 true && false || false
+        //
+        // 1. 4의 배수이면서 100으로 나누어 떨어지지 않는 경우 || 400으로 나누어 떨어지지 않는 경우
+        // 2. 4의 배수이면서 100으로 나누어 떨어지는 경우  || 400으로 나누어 떨어지는 경우
+
+        // 3. 4의 배수이면서 100으로 나누어 떨어지지 않는 경우  || 400으로 나누어 떨어지는 경우
+        // 4. 4의 배수이면서 100으로 나누어 떨어지는 경우  || 400으로 나누어 떨어지지 않는 경우
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

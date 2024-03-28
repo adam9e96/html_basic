@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * break
+         * switch 문이나 반복문을 벗어날 때 사용하는 키워드
+         *
+         * while (true) {
+         *   if(조건식) {
+         *    break;
+         *    }
+         * }
+         *
+         */
+        // 이렇게도 가능은 하다.
+        for (let i = 0; i < true; i++) { // 조건문이 true 라서 무한 반복됨.
+            alert(i + '번째 반복문입니다.');
+
+            // 진행 여부를 물어봄.
+            const isContinue = confirm('계속하시겠습니까?'); // confirm() 에서 취소를 누르면 반복을 종료.
+            if (!isContinue) { // 확인 true 이므로 아니요는 false 임. false 일때 break 문을 실행하기 위해 not 을 붙임
+                break; // 취소를 누르면 false 가 반환이되므로 not 연산자를 사용해서 true 로 반환.
+            }
+        }
+        alert('프로그램 종료'); // 프로그램의 종료를 확인.
+    </script>
+</head>
+<body>
+
+</body>
+</html>

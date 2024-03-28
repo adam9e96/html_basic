@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 배열 요소 제거하기 값으로 요소 제거하기
+         *  값을 기반으로 요소를 제거할 때는
+         * 배열 내부에서 특정 값의 위치를 찾는 indexof(0 메소드를 사용해서 값의 위치를 추출한 후
+         * splice() 메소드를 사용해서 제거
+         *
+         *
+         *  const 인덱스 = 배열.indexof(요소);
+         * 배열.splice(인덱스, 1);
+         *
+         * 따로 메소드가 있는건 아니다.
+         */
+        const fruitsA = ['사과', '배', '바나나'];
+
+        const index = fruitsA.indexOf('바나나'); // 바나나를 값으로 가지는 인덱스를 구함.
+        console.log(index); // 2
+
+        fruitsA.splice(index, 1);
+        console.log(fruitsA); // (2) ['사과','배'];
+
+        console.log(fruitsA.indexOf('바나나')); // 배열이 없는 경우 -1 출력
+        if (fruitsA.indexOf('바나나') >= 0) {
+            fruitsA.splice();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

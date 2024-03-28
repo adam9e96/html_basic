@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        /*
+         * 호이스팅 Hoisting : var 로 선언한 변수와 선언적 함수는 변수, 함수 이전에 호출하여도
+         * 에러를 발생하지 않음.
+         */
+
+        compute(); // 선언적 함수는 함수 정의 전에 사용 가능.
+
+        function compute() {
+            let x = 10;
+            let y = 100;
+            let result = x / y;
+            console.log(result);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // script로 구분이 되어 있으면 실행이 안됨. <-- 이제 조금씩 헷갈리기 시작해짐
+        // Uncaught ReferenceError: compute is not defined
+        compute(); // 안됨
+    </script>
+    <script>
+        compute(); // 0.1
+        function compute() {
+            let x = 10;
+            let y = 100;
+            let result = x / y;
+            console.log(result);
+        }
+
+        compute(); // 0.1
+    </script>
+</head>
+<body>
+
+</body>
+</html>

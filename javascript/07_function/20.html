@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 배열에 저장된 값으로 배경색 바꾸기.
+         */
+        let i = 0;
+        const changeColor = function () {
+            const color = ['white', 'yellow', 'aqua', 'purple']; // 배열 선언
+
+            const bodyTag = document.querySelector('body'); // body 태그를 불러옴
+            bodyTag.style.backgroundColor = color[++i % color.length]; // body 태그의 background-color 를 변경
+            // 변수명에 하이픈(-) 을 넣지 못해서 bodyTag.style.background-color 을 변수명으로 사용하지 못해서 메소드명을 카멜법으로 했음
+
+            // 또 반복 구현 다른 방법2
+            // if (i === 3) {
+            //     i = -1;
+            // }
+        }
+    </script>
+</head>
+<body>
+<!-- 버튼을 클릭하면 changeColor() 함수 호출 -->
+<button onclick="changeColor();">배경색 바꾸기</button>
+
+</body>
+</html>

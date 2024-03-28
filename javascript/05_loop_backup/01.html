@@ -25,6 +25,7 @@
         let output = 0; // 합계에 사용할 변수. 복합 대입 연산자에 사용해야 되서 반듯이 초기화
         for (let i = 1; i < 100; i ++){
             output += i; // 1부터 100까지 더함.
+            console.log(i);
         }
         // console.log(i); // i is not defined -> 변수 i가 효력을 가지는 범위는 for문 안쪽.
         console.log(`1 ~ 100까지 숫자를 모두 더하면 ${output}입니다.`);

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 선언적 함수 사용하기
+         *  선언적 함수 : 이름이 있는 함수.
+         *  기본형 : function 함수이름 () {}
+         *
+         * 대부분의 프로그램은 선언적 함수만 사용하거나(e.g : C),
+         * 선언적 함수를 주로 사용하고 익명함수를 보조적인 수단(C++, 자바의 람다)으로 사용하지만,
+         * 익명함수를 주로 사용하고 선언적 함수를 보조적인 수단으로 사용하는 것을 지향함.
+         */
+        // 함수를 생성
+        function func1st() {
+            console.log('함수 내부의 코드입니다 ... 1');
+            console.log('함수 내부의 코드입니다 ... 2');
+            console.log('함수 내부의 코드입니다 ... 3');
+            console.log('')
+        }
+
+        // 함수를 호출
+        func1st();
+        // func1st();
+
+        // 출력
+        console.log(typeof func1st); // function
+        // console.log(typeof func1st()); // function
+        // console.log(func1st());
+        // ()를 붙이면 함수를 호출하는 형태가 된다.
+        console.log(func1st);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

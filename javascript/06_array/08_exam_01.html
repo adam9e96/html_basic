@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 태어난 연도를 입력 받아 띠를 출력하는 예제를 찾아서 배열을 사용하는 코드로 변경
+         */
+        /* 구문 시작 */
+        const rawInput = prompt('태어난 해를 입력해주세요.', '');
+        const year = Number(rawInput);
+        const array = ['원숭이', '닭', '개', '돼지', '쥐', '소', '호랑이', '토끼', '용', '뱀', '말', '양'];
+        // const e = year % 12;
+        // console.log(e); // 7
+        // const result = array[e];
+        // console.log(result); // 토끼
+
+        alert(`${year}년에 태어났다면 ${array[year % 12]} 띠입니다.`);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

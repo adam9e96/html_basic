@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        // case1
+        const min = function (arr) {
+            let min = arr[0]; // 52
+            for (let i = 1; i <= arr.length; i++) { // 0번 인덱스를 초기화에 사용헀으니 1번 인덱스부터 사용.
+                if (min > arr[i]) { // 현재 min 보다 더 작다면
+                    min = arr[i]; // min 값을 변경
+                }
+            }
+            return min;
+        }
+
+        const testArray = [52, 273, 32, 103, 275, 24, 57];
+        console.log(`${testArray}중에서`);
+        console.log(`최솟값 = ${min(testArray)}`); // 24
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

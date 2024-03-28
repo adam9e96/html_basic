@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         동일한 이름의 함수가 존재
+         선언적 함수의 경우 동일한 이름의 함수가 존재하면 뒤에 선언된 함수가 실행이 됨.
+         */
+        let num = 100;
+
+        function menu() {
+            num += 100;
+            document.write(num, ": 앞의 함수 실행<br>");
+        }
+
+        menu();
+
+        function menu() {
+            document.write(num, ": 뒤의 함수 실행<br>");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

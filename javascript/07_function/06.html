@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 익명 함수
+         * 변수에 함수 데이터를 저장하여 변수를 마치 함수처럼 사용하게 만들어 줌.
+         *
+         * let 변수 = function () {
+         *      실행문;
+         * }
+         * 1. 익명함수는 변수 선언(함수 정의) 후 호출 가능.
+         * 2. 익명함수는 동일한 이름으로 재선언 불가능. let 과 const의 특징.
+         */
+        // 익명 함수는 선언적 함수의 단점을 고칠려고 나온거임
+        // compute();  // Uncaught ReferenceError: Cannot access 'compute' before initialization
+        let compute = function () {
+            let x = 10;
+            let y = 100;
+            let result = x * y;
+            console.log(result);
+        };
+        compute(); // 1000
+
+    </script>
+    <!--    let 의 특징 다른 스크립트에서 재선언 불가능함-->
+    <!--    <script>-->
+    <!--        // Uncaught SyntaxError: Identifier 'compute' has already been declared-->
+    <!--        let compute = function () {-->
+    <!--            let x = 10;-->
+    <!--            let y = 100;-->
+    <!--            let result = x * y;-->
+    <!--            console.log(result);-->
+    <!--        };-->
+    <!--        compute(); // 1000-->
+    <!--    </script>-->
+</head>
+<body>
+
+</body>
+</html>

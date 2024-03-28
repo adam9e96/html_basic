@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        커피 1잔을 300원에 판매하는 커피자판기가 있습니다.
+		이 커피자판기에 돈을 넣으면 자판기에서 뽑을 수 있는 커피가 몇 잔이며 잔돈은 얼마인지를 함께 출력하는 프로그램을 구현하세요.
+
+		실행 예)
+		자판기에 얼마를 넣을까요? >>> 1400
+		커피 1잔, 잔돈 1100원
+		커피 2잔, 잔돈 800원
+		커피 3잔, 잔돈 500원
+		커피 4잔, 잔돈 200원
+
+		1. 반복문을 사용할 때 for, while 중 어느것을 사용?
+		2. 반복을 종료하는 조건은? 잔돈? 잔의 수?
+		3. 사용자에게 입력받는 부분은 나중에 구현하고 프로토타입부터 개발
+         */
+        let money = prompt('자판기에 얼마를 넣을까요? >>>');
+        // 1400; // 입력한 돈. 나중에 prompt('자판이게 얼마를 넣을까요? >>>') 로 변경.
+        const priceCoffee = 300; // 커피 한장의 가격
+
+        // case1.
+        if (money < priceCoffee) {
+            console.log(`입력한 금액의 커피 1잔의 최소 가격인 ${priceCoffee} 보다 적습니다.`);
+        }
+        let i = 1;
+        while (money >= priceCoffee) {
+            money -= priceCoffee;
+            console.log(`커피 ${i}잔, 잔돈${money}원`);
+            i++;
+        }
+        // case2.
+        let cup = 0; //잔수를 저장. 300원 보다 적은 금액이 입력될 수도 있으니 0으로 초기화.
+        while (money >= priceCoffee){ // 돈이 300원 이상이면 실행
+            cup++;
+            money -= priceCoffee;
+            console.log(`커피 ${i}잔, 잔돈${money}원 <br>`);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

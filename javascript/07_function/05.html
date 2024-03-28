@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function compute() {
+            let x = 10;
+            let y = 100;
+            let result = x / y;
+            console.log(result);
+        }
+        compute(); // 0.1
+    </script>
+    <script>
+        // 선언적 함수는 재정의 가능
+        compute(); // 110
+        function compute() {
+            let x = 10;
+            let y = 100;
+            let result = x + y;
+            console.log(result);
+        }
+        compute(); // 110
+    </script>
+</head>
+<body>
+
+</body>
+</html>

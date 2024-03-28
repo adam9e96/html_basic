@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * while 문으로 배열 출력하기
+         * while 반복문과 for 반복문은 서로 대체해서 사용할 수 있음.
+         *
+         * 보통 특정 횟수 반복할 때 for.
+         * 조건에 큰 비중이 있을 때는 while.
+         * 예 ) 특정 시간동안 어떤 데이터를 받을 때 까지
+         */
+
+        const array = [1, 2, 3, 4, 5];
+
+        // for 문으로 배열 출력. 위의 코드에도 초기값, 조건식, 증감식이 있음.
+        for (let j = 0; j < array.length; j++) {
+            console.log(`{${j} : ${array[j]}`);
+        }
+
+        // 1. 인덱스 번호가 필요 : 0 ~ 4
+        // 2. 반복문은 5번 반복
+        // while 문으로 배열 출력.
+        let i = 0
+        while (i < array.length) {
+            console.log(`{${i} : ${array[i]}`);
+            i++;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
