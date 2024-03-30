@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+        // 호이스팅이 되는 선언적 함수의 문제점
+        //
         // script로 구분이 되어 있으면 실행이 안됨. <-- 이제 조금씩 헷갈리기 시작해짐
         // Uncaught ReferenceError: compute is not defined
         compute(); // 안됨
@@ -18,7 +20,15 @@
         }
 
         compute(); // 0.1
+
+        /*
+         * 요약하자면, 자바스크립트에서 호이스팅은 변수와 함수 선언을 해당 스코프의 최상단으로 끌어올리는 행위를 말합니다.
+         * 그러나 이 호이스팅은 각 <script> 태그의 스코프 내에서만 발생합니다.
+         * 따라서, 한 <script> 태그 내에서 선언된 함수나 변수는 다른 <script> 태그에서는 직접적으로 접근할 수 없습니다.
+         * 이는 <script> 태그가 서로 독립적인 실행 컨텍스트를 가지기 때문입니다.
+         */
     </script>
+
 </head>
 <body>
 

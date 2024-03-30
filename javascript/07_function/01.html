@@ -12,6 +12,10 @@
          * 1. 반복되는 코드를 한 번만 정리 해놓고 필요할 때마다 호출하므로 반복 작업을 피할 수 있다.
          * 2. 긴 프로그램을 기능별로 나눠 여러 함수로 나누어 작성하면 모듈화로 전체 코드의 가독성이 좋아진다.
          * 3. 기능별(함수별)로 수정이 가능하므로 유지보수가 쉽다.
+         *    function functionName(parameters) {
+         *    // 함수가 수행할 코드
+         *    return value;
+         *    }
          *
          *  * 용어 정리
          * 함수 정의 : 함수를 만드는 것.
@@ -47,6 +51,10 @@
         // 출력
         console.log(typeof func); // function. 함수의 자료형 선언
         console.log(func); // 함수 자체도 단순한 자료이므로 출력할 수 있음.
+
+        console.log(1234);
+        console.log(typeof func()); // undefined. 반환형의 타입을 조사. 반환형이 없어서 undefined
+        console.log(func()); // 함수 속 코드가 실행됨
 
     </script>
 </head>

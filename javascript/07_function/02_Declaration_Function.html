@@ -12,8 +12,14 @@
          * 대부분의 프로그램은 선언적 함수만 사용하거나(e.g : C),
          * 선언적 함수를 주로 사용하고 익명함수를 보조적인 수단(C++, 자바의 람다)으로 사용하지만,
          * 익명함수를 주로 사용하고 선언적 함수를 보조적인 수단으로 사용하는 것을 지향함.
+         *
+         * 선언적 함수의 특징
+         *  1. 호이스팅이라는 매커니즘에 의해 스크립트 어느 위치에서든지 호출할 수 있다.
+         *  2. 함수의 이름과 function 이라는 키워드를 사용하여 함수를 정의한다.
          */
         // 함수를 생성
+        console.log(`1`);
+        func1st();
         function func1st() {
             console.log('함수 내부의 코드입니다 ... 1');
             console.log('함수 내부의 코드입니다 ... 2');
@@ -21,17 +27,16 @@
             console.log('')
         }
 
+        console.log(`2`);
         // 함수를 호출
         func1st();
-        // func1st();
 
         // 출력
         console.log(typeof func1st); // function
-        // console.log(typeof func1st()); // function
+        // console.log(typeof func1st()); // undefined
         // console.log(func1st());
         // ()를 붙이면 함수를 호출하는 형태가 된다.
         console.log(func1st);
-
     </script>
 </head>
 <body>
