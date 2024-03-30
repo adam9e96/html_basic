@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 콜백함수를 활용하는 함수 : forEach() 메서드
+         * 배열이 갖고 있는 함수(메서드)로써 단순하게 배열 내부 요소를 사용해서 콜백함수를 호출
+         *
+         * 배열이 가지고 있는 메소드 중 콜백 함수를 활용하는 메서드는 아래와 같은 형태의 콜백함수를 사용.
+         *
+         * 매개 변수가 다 필요하지 않음.
+         * 기본형 :
+         * function (value, index, array) {}
+         *
+         */
+        const numbers = [273, 52, 103, 32, 57];
+
+        numbers.forEach(function (value, index, array) {
+            // 매개변수로 value, index, array를 갖는 콜백함수를 사용.
+            console.log(`${index}번째 요소 : ${value}`);
+        });
+
+        // 함수 선언한 후에 매개 변수로 넘겨도 됨.
+        const call = function (value, index, array) {
+            // 매개변수로 value, index, array를 갖는 콜백함수를 사용.
+            console.log(`${index}번째 요소 : ${value}`);
+        }
+        numbers.forEach(call);
+
+        /*
+        0번째 요소 : 273
+        1번째 요소 : 52
+        2번째 요소 : 103
+        3번째 요소 : 32
+        4번째 요소 : 57
+         */
+
+        numbers.forEach(function (v, i) { // 매개변수로 v, i 만 사용
+            console.log(`${i}번째 요소 : ${v}`);
+        });
+
+        numbers.forEach(function (item) { // 매개변수로 value 만 사용
+            console.log(`${item} 값`);
+        });
+        // value는 단독으로 올 수 있으나 첫번째라 혼자 올 수있는 거고 index 같은 두번쨰 이상의 매개변수는 첫번째 매개변수도 줘야함
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

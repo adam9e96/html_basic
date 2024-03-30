@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 나머지 매개 변수와 일반 매개변수 조합하기
+         *
+         * 기본형
+         * function 함수명 (매개변수, 매개변수, ...나머지 매개변수) {}
+         */
+        function sample(a, b, ...c) {
+            console.log(a, b, c);
+
+        }
+
+        // 매개변수 a,b가 먼저 들어가고, 남은 것은 모두 c에 배열 형태로 들어감
+        sample(1, 2); // 1 2 []
+        sample(1, 2, 3); // 1 2 [3]
+        sample(1, 2, 3, 4); // 1 2 [3,4]
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

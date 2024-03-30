@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         *
+         */
+        function callThreeTimes(callback) { // 함수를 선언
+            for (let i = 0; i < 3; i++) {
+                callback(i);
+            }
+        }
+
+        const print = function (i) {
+            console.log(`${i}번째 함수 호출`);
+        }
+
+        // 함수를 호출. 다른 언어에서는 낯선 방법이나 자바 스크립트나 코틀린 같은 이벤트 기반의 프로그래밍에서는 자주 사용.
+        callThreeTimes(function (i) {
+            console.log(`${i}번째 함수 호출`);
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

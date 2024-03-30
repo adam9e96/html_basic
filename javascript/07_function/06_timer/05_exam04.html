@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        // 2번 예제를 수정. '재시작' 버튼을 클릭하면 재시작
+        let count = 1;
+        const color = ['blue', 'green', 'pink', 'beige', 'skyblue', 'grey', 'cyan'];
+
+        const timer = function () {
+            document.getElementById('counter').innerHTML = String(count);
+            document.getElementById('counter').style.color = color[count % color.length];
+            count++;
+        };
+        let id = setInterval(timer, 1 * 1000);
+
+        const stopTimer = () => clearInterval(id);
+
+        const reStartTimer = function () {
+            id = setInterval(timer, 1 * 1000);
+        }
+
+    </script>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 500px;
+        }
+
+        span {
+            width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            background: grey;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="counter">0</div>
+<span onclick="stopTimer()">정지</span>
+<span onclick="reStartTimer()">재시작</span>
+</body>
+</html>
+
+

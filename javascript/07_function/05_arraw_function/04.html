@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 화살표 함수
+         *
+         * ES6에 추가된 내용으로 '=>' 를 이용하여 함수를 간결하게 표현할 때 사용.
+         *
+         * 1) function 키워드를 생략하고
+         * 2) 부등호 '=' 과 '>' 를 합쳐서 코딩하고
+         * 3) 항상 익명함수 형식으로 표현
+         * 4) 단일 명령문일 경우 함수의 중괄호 {} 와 return 을 생략함.
+         *
+         * map(), filter() 함수처럼 단순한 형태의 콜백 함수를 쉽게 입력
+         * function 키워드 대신 화살표(=>)를 사용.
+         * 기본형 :
+         * (매개변수) => { }
+         */
+        let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        // numbers 에서 2의 배수만 추출한 후, 제곱을 한 후에 로그에 출력.
+        // 메소드 체이닝 : 메소드가 리턴하는 값을 기반으로해서 메소드를 줄줄히 사용하는 것.
+
+        numbers.filter(value => value % 2 === 0) // 2의 배수만 추출 // [0, 2, 4, 6, 8]
+            .map(value => value * value)
+            .forEach(value => console.log(value)); // [0, 4, 16, 36, 64]
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 1의 자리가 3의 배수인 경우만 추출
+        // 13하고 16이 와야함
+        const numbers = [11, 12, 13, 14, 15, 16];
+
+        // 1의 자리가 3의 배수만 추출
+        const multiple_of_3 = numbers.filter(function (value) {
+            // return value % 10 === 3 || value % 10 === 6 || value % 10 === 9;
+            return value % 10 % 3 === 0;
+        });
+        console.log(`일의 자리가 3의 배수인 경우만 추출 ${multiple_of_3}`); // 13 16
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 재귀 함수
+         * -> 함수 정의문 내에서 작성한 코드로 다시 작성하는 것
+         */
+        let num = 0;
+
+        function testFnc() { // 현시점에선 무한 호출
+            // 재귀 함수 호출을 적용하여 1 부터 10까지의 값을 출력
+            num++;
+            document.write(num, '<br>');
+            if (num === 10) return; // num 이 10이면 종료
+
+            // 9 까지 찍힘 10이면 종료되니까
+            console.log(`${num} 번쨰 호출`);
+
+            testFnc(); // 재귀 함수 호출
+        }
+
+        testFnc();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

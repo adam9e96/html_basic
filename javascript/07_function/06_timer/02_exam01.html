@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <script>
+        // 페이지가 로딩된 후에 화면에 1초마다 1씩 증가하는 카운팅 되도록
+        let count = 1;
+        const color = ['blue', 'green', 'pink', 'beige', 'skyblue', 'grey', 'cyan'];
+        setInterval(() => {
+
+            document.getElementById('counter').innerHTML = String(count);
+            document.getElementById('counter').style.color = color[count % color.length];
+            count++;
+        }, 1 * 1000);
+    </script>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 500px;
+        }
+    </style>
+</head>
+<body>
+<div id="counter">0</div>
+
+</body>
+</html>
