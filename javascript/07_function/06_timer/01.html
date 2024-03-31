@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <script>
         /*
-         * 타이머 함수 : 특정 시간 이후에 콜백함수를 호출할 수 있는 함수.
+         * 타이머 함수 : 특정 시간 이후에 콜백함수를 호출 할 수 있는 함수.
          *
          * setTimeout(함수, 시간) : 특정 시간 후에 함수를 한 번 호출. . 딱 한번만 실행
-         * setInterval(함수, 시간) : 특정 시간 마다 함수를 호출.
+         * setInterval(함수, 시간) : 특정 시간 마다 함수를 호출. <-- 끝 없이 실행 되는 함수임
          */
-        setTimeout(function () {
-            console.log('2초 후에 실행됩니다.')
-        }, 2 * 1000); // 시간의 기초 단위는 밀리 초 단위 2 * 1000ms = 2s
 
+        // setTimeout() 함수
+        // setTimeout(function () {
+        //     console.log('2초 후에 실행됩니다.');
+        // }, 2 * 1000); // 시간의 기초 단위는 밀리 초 단위 2 * 1000ms = 2s
+
+
+        // setInterval() 함수
         let count = 0;
         setInterval(() => {
             {

@@ -3,8 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            font-size: 300px;
+            text-align: center;
+        }
+
+        button {
+            width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            font-size: 35px;
+        }
+    </style>
+    <script>
+        const rainbows = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        let count = 1;
+        const timer = function () {
+            document.querySelector('div p').innerHTML = String(count);
+            document.querySelector('div p').style.color = rainbows[count % rainbows.length];
+            count++;
+        };
+        let id = setInterval(timer, 1000);
+
+        const stopTimer = function () {
+            document.querySelector('div button:nth-of-type(1)').setAttribute('disabled', 'disabled');
+            document.querySelector('div button:nth-of-type(2)').removeAttribute('disabled');
+            clearInterval(id);
+        }
+        const restartTimer = function () {
+            document.querySelector('div button:nth-of-type(1)').removeAttribute('disabled');
+            document.querySelector('div button:nth-of-type(2)').setAttribute('disabled', 'disabled');
+            id = setInterval(timer, 1000);
+        }
+    </script>
+
 </head>
 <body>
-
+<div><p>0</p>
+    <button onclick="stopTimer()">정지</button>
+    <button onclick="reStartTimer()" disabled="disabled">재시작</button>
+</div>
 </body>
 </html>

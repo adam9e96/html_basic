@@ -9,18 +9,38 @@
         let count = 1;
         const color = ['blue', 'green', 'pink', 'beige', 'skyblue', 'grey', 'cyan'];
 
-        const timer = function () {
+        // const timer = function () {
+        //     document.getElementById('counter').innerHTML = String(count);
+        //     document.getElementById('counter').style.color = color[count % color.length];
+        //     count++;
+        // };
+        // let id = setInterval(timer, 1 * 1000);
+        let id = setInterval(function () {
             document.getElementById('counter').innerHTML = String(count);
             document.getElementById('counter').style.color = color[count % color.length];
             count++;
-        };
-        let id = setInterval(timer, 1 * 1000);
+        }, 1000);
 
+        // 정지 버튼 클릭 시
         const stopTimer = () => clearInterval(id);
 
-        const reStartTimer = function () {
-            id = setInterval(timer, 1 * 1000);
+        const reStartTimer = () => {
+            id = setInterval(timer, 1000);
         }
+
+        function timer() {
+            document.getElementById('counter').innerHTML = String(count);
+            document.getElementById('counter').style.color = color[count % color.length];
+            count++;
+        }
+
+        // const reStartTimer = () => {
+        //     setInterval(() => {
+        //         document.getElementById('counter').innerHTML = String(count);
+        //         document.getElementById('counter').style.color = color[count % color.length];
+        //         count++;
+        //     }, 1000);
+        // }
 
     </script>
     <style>

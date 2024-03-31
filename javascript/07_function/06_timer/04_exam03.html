@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
 
-        // 1번 예제를 수정. '정지' 버튼을 클릭하면 정지
-        let count = 1;
+    <script>
+        //        // 1번 예제를 수정. '정지' 버튼을 클릭하면 정지
+
+        let count = 0;
         const color = ['blue', 'green', 'pink', 'beige', 'skyblue', 'grey', 'cyan'];
         let id = setInterval(() => {
-
             document.getElementById('counter').innerHTML = String(count);
             document.getElementById('counter').style.color = color[count % color.length];
             count++;
@@ -32,7 +32,6 @@
             justify-content: center;
             align-items: center;
             font-size: 500px;
-
         }
 
         span {
@@ -41,6 +40,7 @@
             display: block;
             margin: 0 auto;
             background: grey;
+            font-size: 50pt;
         }
     </style>
 </head>
