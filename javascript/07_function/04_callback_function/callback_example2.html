@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function() {
+            // 이벤트 리스너에 사용되는 콜백
+            function handleClick() {
+                console.log("버튼이 클릭되었습니다.");
+            }
+
+            // 버튼 요소에 클릭 이벤트 리스너 추가
+            document.getElementById("myButton").addEventListener("mouseover", handleClick);
+        }
+    </script>
+</head>
+<body>
+<!-- id 속성 추가 -->
+<button id="myButton">버튼이요</button>
+</body>
+</html>

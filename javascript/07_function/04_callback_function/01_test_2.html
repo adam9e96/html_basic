@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        const afterDeley = () => {
+            console.log('3초가 지났습니다.');
+        };
+
+        // setTimeout 함수에 콜백 함수로 afterDelay 를 전달
+        setTimeout(afterDeley, 3000); // 3초 우에 '3초가 지났습니다!' 를 출력
+
+        //  setTimeout 함수는 지정된 시간(3초)이 지난 후에 afterDelay 함수를 호출.
+        //  afterDelay 함수가 setTimeout의 콜백 함수로 전달
+    </script>
+</head>
+<body>
+
+</body>
+</html>

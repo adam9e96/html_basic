@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        'use strict';
+        const array = [1, 2, 3, 4];
+
+        function sample1st(a, b, c, d, ...e) {
+            console.log('sample1st() 실행');
+            console.log(a, b, c, d, ...e);
+        }
+
+        sample1st(...array);// 아래 방식과 동일하게 출력됨
+
+        sample1st(array[0], array[1], array[2], array[3], 5, 6, 7, 8);
+
+        function sample2nd() {
+            console.log('sample2nd() 실행');
+            let array = [1, 2, 3, 4];
+            return array;
+        }
+
+        sample2nd();
+        console.log(sample2nd());
+        let [a, b, c, d] = sample2nd();
+        console.log(a, b, c);
+
+        const notArray = 10;
+
+        function sample3rd(...items) { // 단순하게 매개변수를 모두 출력하는 함수
+            document.write('<br>sample3rd() 실행<br>');
+            // document.write(items, '<br>');
+
+            if (Array.isArray(items)) {
+                for (const item of items) { // 배열로 인식되야 실행됨
+                    document.write(item, '<br>');
+                }
+            } else{
+                console.log("배열이 아님");
+            }
+        }
+        // const array = [1, 2, 3, 4];
+
+        sample3rd(notArray);
+        // sample3rd(array);
+        // sample3rd(...array);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
