@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>StopWatch_오세빈</title>
+    <script>
+        let count = 0;
+        let id = 0; // setInterval 저장할 변수
+
+        // start
+        const startTimer = function () {
+            const startBtn = document.querySelector('.start_btn'); // 시작 버튼 태그 찾기
+            startBtn.setAttribute('disabled', 'disabled'); // 시작 버튼 비활성화
+
+            id = setInterval(function () { // 1초마다 실행
+                document.getElementById('display').innerHTML = String(count);
+                count++;
+            }, 1000);
+        };
+
+        // stop
+        const stopTimer = function () {
+            clearInterval(id); // 타이머 중지
+            const startBtn = document.querySelector('.start_btn'); // 시작 버튼 선택
+            startBtn.removeAttribute('disabled'); // 시작 버튼 활성화
+        };
+
+        // reset
+        const resetTimer = function () {
+            clearInterval(id); // 타이머 중지
+            count = 0; // 카운터 초기화 <-- 내부 카운트 0으로 초기화
+            document.getElementById('display').innerHTML = '0'; // 디스플레이 초기화 <-- HTML count 0 초기화
+            const startBtn = document.querySelector('.start_btn'); // 시작 버튼 선택
+            startBtn.removeAttribute('disabled'); // 시작 버튼 활성화
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        #display {
+            color: white;
+            font-size: 80px;
+            display: flex;
+        }
+
+        .stopWatch_container {
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+
+            /*background-color: #e9d4f2;*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .buttons {
+            width: 400px;
+            height: 50px;
+
+            background-color: #cccccc;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .start_btn, .stop_btn, .reset_btn {
+            width: 100px;
+            height: 50px;
+            box-sizing: border-box;
+            font-size: 26px;
+            color: white;
+        }
+
+        .start_btn, .stop_btn {
+            background-color: black;
+        }
+
+        .reset_btn {
+            background-color: red;
+        }
+
+        .counter {
+            width: 400px;
+            height: 400px;
+
+            background-color: #97dfec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="stopWatch_container">
+    <div class="counter">
+        <div id="display">0</div>
+    </div>
+    <div class="buttons">
+        <button class="start_btn" onclick="startTimer()">Start</button>
+        <button class="stop_btn" onclick="stopTimer()">pause</button>
+        <button class="reset_btn" onclick="resetTimer()">Reset</button>
+    </div>
+</div>
+
+
+</body>
+</html>

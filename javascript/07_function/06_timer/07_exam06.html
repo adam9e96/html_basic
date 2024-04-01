@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 300px;
+        }
+    </style>
+    <script>
+        const str = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+        const str2 = ['', '십', '이십', '삼십', '사십', '오십'];
+        let count = 0; // 초 카운트를 0부터 시작하도록 초기화
+        setInterval(function () {
+            const tens = Math.floor(count / 10); // 10의 자리 계산
+            const ones = count % 10; // 1의 자리 계산
+            let strtmp = (tens > 0 ? str2[tens] : '') + (ones > 0 ? str[ones] : '영'); // 10의 자리와 1의 자리를 결합
+            document.querySelector('div').innerHTML = strtmp;
+            count++;
+            if (count === 60) count = 0; // 59초 다음에 0으로 리셋
+        }, 100); // 1초마다 반복
+    </script>
+</head>
+<body>
+<div>영</div>
+</body>
+</html>
