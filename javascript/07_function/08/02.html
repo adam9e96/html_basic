@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 블록({}) 생성으로 이름 충돌 문제를 해결하는 방법은
+         * 1) 구 브라우저나, 2) var 키워드를 사용하는 경우에는
+         * 사용할 수 없어서 대체재로 즉시 호출 함수를 사용.
+         */
+    </script>
+    <script>
+        /* 다른 곳에서 가져온 자바스크립트 코드 */
+        let pi = 3.14;
+        console.log(`파이 값은 ${pi}입니다.`); // 파이 값은 3.14 입니다.
+    </script>
+    <script>
+        // /* 내가 만든 자바스크립트 코드 */
+        // let pi = 3.141592;
+        // console.log(`파이 값은 ${pi}입니다.`); // 파이 값은 3.14 입니다.
+        // 즉시 호출 함수를 사용해 변수 이름 충돌 문제를 해결
+        (function () {
+            let pi = 3.141592;
+            console.log(`파이 값은 ${pi}입니다.`); // 파이 값은 3.14 입니다.
+        })();
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

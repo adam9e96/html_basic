@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">Click me 1!</button>
+<button id="btn2">Click me 2!</button>
+<script>
+    const buttons = document.querySelectorAll('button'); // 모든 버튼을 선택
+
+    const btnClick = () => console.log('button click');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', btnClick); // 각 버튼에 이벤트 리스너 추가
+    });
+</script>
+</body>
+</html>

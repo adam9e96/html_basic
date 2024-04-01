@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>Click me!</button>
+<script>
+    const myButton = document.querySelector('button');
+    // document.querySelector() 전에 해당 html 요소가 있어야 자바 스크립트가 제대로 동작.
+    console.log(myButton); // <button>Click me!</button>
+    // 사용자가 버튼을 클릭하면 함수를 호출하도록 요청.
+    myButton.onclick = () => { alert("button click"); };
+    // 이벤트 핸들러 등록
+</script>
+</body>
+</html>
