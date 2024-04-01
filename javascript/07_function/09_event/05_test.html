@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 이렇게 설정하면, "이벤트 핸들러 2"만 실행됩니다. -->
+<button onclick="console.log('이벤트 핸들러 1');">클릭하세요</button>
+<script>
+    document.querySelector('button').setAttribute('onclick', "console.log('이벤트 핸들러 2');");
+</script>
+
+<script>
+// const btn = document.querySelector('button');
+// btn.onclick = function() { console.log('이벤트 핸들러 1'); };
+// btn.onclick = function() { console.log('이벤트 핸들러 3'); }; // 이 핸들러만 실행됩니다.
+
+</script>
+</body>
+</html>

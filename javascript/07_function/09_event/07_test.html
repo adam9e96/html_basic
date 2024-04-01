@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="button1">click me!</button>
+<button id="button2">click me2!</button>
+<script>
+    function commonEventHandler() {
+        console.log('이벤트 발생함!');
+    }
+
+    // 첫 번째 버튼에 이벤트 리스너 추가
+    document.getElementById('button1').addEventListener('click', commonEventHandler);
+    // 두 번째 버튼에 동일한 이벤트 리스너 추가
+    document.getElementById('button2').addEventListener('click', commonEventHandler);
+
+</script>
+</body>
+</html>
