@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+        /*
+         * 클로저 함수
+         *  내부 함수가 외부 함수의 스코프에 있는 변수에 접근할 수 있게 해준다.
+         *  외부 함수가 실행을 마친 후에도 외부 함수의 변수에 접근할 수 있다.
+         *   function 외부함수() {
+              var 외부변수 = '외부 변수';
+
+              function 내부함수() {
+                console.log(외부변수);  // 외부 함수의 변수에 접근
+              }
+              return 내부함수;  // 내부 함수를 반환
+            }
+
+            var myClosure = 외부함수();
+             myClosure();  // "외부 변수"
+
+         */
         function func() {
             console.log('선언적 함수입니다.');
 
@@ -27,6 +44,7 @@
             const exec = function () {
                 const bodyTag = document.querySelector('body'); // body 태그를 불러옴
                 bodyTag.style.backgroundColor = color[++i % color.length]; // body 태그의 background-color 를 변경
+                // console.log(bodyTag);
             };
             return exec;
         })();

@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>IIFE_01</title>
     <script>
+        'use strict'; // 엄격 모드
         /* var 에서 블럭 사용과 즉석 */
         var animal = 'dog';
         console.log(animal); // dog
@@ -14,10 +15,13 @@
 
         }
 
+        // var, let(const) 의 차이점
         console.log(animal); // cat // 블럭에서 사용했지만 블럭 밖으로 변수 사용이 됨.
 
+        //
         var animal = 'dog';
         console.log(animal); // dog
+
         // 즉석 실행 함수
         // 즉시 실행 함수는 자바스크립트의 특수한 함수. 다른 곳에 영향을 미치지 않고 즉시 실행되고 끝남.
         (function () {
@@ -26,6 +30,7 @@
 
         })();
         console.log(animal); // dog. // 즉시 호출 함수의 경우에는 함수 블럭 안에서만 변수의 범위가 제한 됨.
+
 
     </script>
 </head>

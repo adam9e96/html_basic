@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>IIFE_05</title>
+    <script>
+        // 즉시 실행 가능한 함수
+        let i = 3.14;
+        (function () {
+            let i = 1
+            console.log(`오늘은 2024년 4월 ${i}일입니다.`);
+        })();
+        console.log(i);
+
+        // 디폴트 파라미터
+        const memory = function (name, GB = 16, DDR = 'DDR5') {
+            console.log(`${name}제조사, ${GB}GB 용량, ${DDR} 규격의 램을 구매 할 예정이다.`);
+        }
+        // 나는 마이크론 램을 32기가 DDR4 규격으로 구매할 예정이다.
+        memory('마이크론', 32, 'DDR4'); // 마이크론제조사, 32GB 용량, DDR4 규격의 램을 구매 할 예정이다.
+
+        // 나는 업자가 추천 해주는 대로 사겠다
+        memory('삼성'); // 삼성제조사, 16GB 용량, DDR5 규격의 램을 구매 할 예정이다.
+
+        memory('삼성', 64); // 삼성제조사, 64GB 용량, DDR5 규격의 램을 구매 할 예정이다.
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
