@@ -21,11 +21,11 @@
         const color = ['red', 'orange', 'yellow', 'blue'];
         const colorChange = () => body.style.backgroundColor = color[index++ % color.length];
         const colorReset = () => {
-            body.removeEventListener('click', colorChange);
+            btnChangeBackground.removeEventListener('click', colorChange);
             body.style.backgroundColor = '';
         }
 
-        body.addEventListener('click', colorChange);
+        btnChangeBackground.addEventListener('click', colorChange);
 
         backgrountReset.addEventListener('click', colorReset);
         });

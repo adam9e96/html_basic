@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+    </style>
+    <script>
+        'use strict';
+        document.addEventListener("DOMContentLoaded", () => {
+            const btn = document.querySelector('button');
+            const btnDelGreen = document.querySelectorAll('button')[1]; // '녹색만 제거' 버튼 선택
+            const ulTag = document.querySelector('ul');
+            const rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple'];
+            let count = 0;
+
+            btn.addEventListener("click", () => {
+                // 무지개색 추가 로직
+                if (count >= rainbow.length) {
+                    ulTag.removeChild(ulTag.firstChild);
+                }
+
+                const liTag = document.createElement('li');
+                const color = rainbow[count % rainbow.length];
+                liTag.textContent = color;
+                liTag.style.backgroundColor = color;
+                liTag.style.color = 'white';
+                ulTag.appendChild(liTag);
+
+                count++;
+            });
+
+            btnDelGreen.addEventListener("click", () => {
+                // '녹색만 제거' 로직
+                const allLis = ulTag.querySelectorAll('li');
+                allLis.forEach(li => {
+                    if (li.style.backgroundColor === 'green') {
+                        ulTag.removeChild(li);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<button>무지개색 추가</button>
+<button>녹색만 제거</button>
+<!--
+<li style="background-color: green; color: white;">green</li>
+-->
+<ul>
+
+</ul>
+</body>
+</html>

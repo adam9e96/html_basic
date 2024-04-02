@@ -29,6 +29,7 @@
         const headerAll = document.querySelectorAll('h2'); // 요소를 읽어들임
         // console.log(headerAll);
         headerAll.forEach((item) => { // 일반적으로 forEach() 메소드를 사용해서 반복을 돌림.
+            // console.log(item);
             item.textContent = 'headerAll';
             item.style.color = 'red';
             item.style.backgroundColor = 'black';
@@ -36,11 +37,15 @@
             item.style.borderRadius = '10px';
         });
 
-        // // 1. for 문을 사용해서 글자색을 빨강으로 변경
+        // // 1. for 문을 사용해서 글자색을 빨강으로 변경 // 길이는 4
         for (let i = 0; i < headerAll.length; i++) {
             headerAll[i].style.color = 'pink';
+            if (i === 3) { // 마지막 요소
+                headerAll[i].style.color = 'green';
+            }
         }
-        // // 2. for in 문을 사용해서 글자색을 파랑으로 변경.
+
+        // 2. for in 문을 사용해서 글자색을 파랑으로 변경.
         for (let idx in [...headerAll]) { // 전개연산자를 사용해서 배열로 변환.
             headerAll[idx].style.color = 'blue';
         }
@@ -48,9 +53,10 @@
         // // 3. for of 문을 사용해서 글자색을 주황으로 변경.
         for (const item of headerAll) {
             item.style.color = 'orange';
+            console.log(item);
         }
     });
-</script>
+</script>\
 
 <body>
 <h1></h1>

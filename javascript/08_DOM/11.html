@@ -18,8 +18,9 @@
             console.log(fruits);
 
             btnRed.addEventListener("click", () => {
-                fruits.forEach((item) => {
+                fruits.forEach((item, index) => {
                     item.style.color = 'red';
+                    if (index === 1) item.style.backgroundColor = 'pink'; // 두 번째 요소의 색상을 pink로 변경
                 });
             });
             btnOrange.addEventListener("click", () => {

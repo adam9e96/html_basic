@@ -17,7 +17,7 @@
     const handleClick = () => console.log('button click');
 
     // 이벤트 핸들러 등록
-    btn.addEventListener("click", handleClick);
+    btn.addEventListener("click", handleClick,true);
 
     // 이벤트 핸들러
     btn.removeEventListener("click", handleClick, true); // <-- 실패

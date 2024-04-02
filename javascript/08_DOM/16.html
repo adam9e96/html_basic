@@ -35,8 +35,8 @@
                 liTag.style.backgroundColor = rainbow[count++ % rainbow.length];
                 liTag.style.color = 'white';
 
-                document.body.appendChild(liTag);
-
+                ulTag.appendChild(liTag);
+                console.log(rainbow.length); // 7
                 // // 같은 색깔의 li 삭제
                 // if (liTag.style.backgroundColor === rainbow[count % rainbow.length] ){
                 //     document.body.removeChild(liTag);
@@ -47,7 +47,7 @@
                     firstLi.parentNode.removeChild(firstLi);
                 }
                 ulTag.appendChild(liTag);
-            //     body > li:nth-child(5)
+                //     body > li:nth-child(5)
             });
 
         });
