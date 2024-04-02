@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>Click me!</button>
+<script>
+    const btn = document.querySelector('button');
+    const commonClick = function () {
+        console.log('[1] button click');
+    };
+
+
+    // addEventListener 메서드는 동일한 요소에서 발생한 동일한 이벤트에 대해
+    // 하나 이상의 이벤트 핸들러를 등록할 수 있음.
+
+    // 참조가 동일한 이벤트 핸들러를 중복 등록하면 하나의 핸들러만 등록됨.
+    btn.addEventListener("click", commonClick); // 얘는 실행이 안되고 있다.
+    btn.addEventListener("click", commonClick);
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        document.addEventListener('DOMContentLoaded',function () {
+        /*
+         * 1. 화면에 버튼 2개 생성. '배경색 변경', '배경색 초기화'
+         * 2. '배경색 변경' 버튼을 클릭하면 배경이 빨강, 주황, 노랑, 파랑 순서 대로 변경
+         * 3. '배경색 초기화' 버튼을 클릭하면 배경 속성이 초기화되고 '배경색 변경' 버튼을 클릭해도 동작이 안되도록.
+         */
+        const body = document.querySelector('body');
+        // const btnChangeBackground;
+        // btnInitBackground;
+        const btnChangeBackground = document.querySelector('button:nth-child(1)');
+        const backgrountReset = document.querySelector('button:nth-child(2)');
+
+        let index = 0;
+        const color = ['red', 'orange', 'yellow', 'blue'];
+        const colorChange = () => body.style.backgroundColor = color[index++ % color.length];
+        const colorReset = () => {
+            body.removeEventListener('click', colorChange);
+            body.style.backgroundColor = '';
+        }
+
+        body.addEventListener('click', colorChange);
+
+        backgrountReset.addEventListener('click', colorReset);
+        });
+    </script>
+    <script>
+        'use strict';
+        /*
+         * DOMContentLoaded 이벤트
+         * DOMContentLoaded 는 웹 브라우저가 문서 객체를 모두 읽고 나서 실행하는 이벤트
+         * DOMContentLoaded 이벤트를 연결. DOMContentLoaded 상태가 되었을 때 콜백 함수를 호출.
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            const h1 = (text)`<h1>${text}</he>`;
+            document.body.innerHTML += h1('DOMContentLoaded 이벤트 발생');
+        })
+    </script>
+
+</head>
+<body>
+<button>배경색 변경</button>
+<button>배경색 초기화</button>
+</body>
+</html>

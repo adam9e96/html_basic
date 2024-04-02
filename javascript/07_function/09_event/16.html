@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+1. 화면에 버튼 3개 생성. '클릭', '제거', '등록'
+2. '클릭' 버튼을 클릭하면 경고창에 클릭한 횟수가 나옴
+3. '제거' 버튼을 클릭하고 '출력'버튼을 클릭하면 경고창이 안나옴.
+4. '등록' 버튼을 클릭하면 '클릭'버튼을 클릭하면 경고창이 다시 나옴.
+-->
+<button>Click!</button>
+<button>Remove!</button>
+<button>Register!</button>
+<script>
+    // 1. querySelector() 로 요소 선택
+    const btnClick = document.querySelector('button:nth-child(1)');
+    const btnRemove = document.querySelector('button:nth-child(2)');
+    const btnRegister = document.querySelector('button:nth-child(3)');
+
+
+    // 2. 클릭 버튼 이벤트 등록
+    let count = 1;
+    const alertBtn = () => alert(`${count++}번 실행됨`);
+
+
+    // 3. 제거 버튼 이벤트 등록 : 제거 버튼에 이벤트 핸들러 등록. 등록해야 할 이벤트의 내용이 클릭 버튼의 이벤트 제거
+    const removeBtn = () => btnClick.removeEventListener("click", alertBtn);
+
+
+    // 4. 등록 버튼 이벤트 등록
+    const registerBtn = () => btnClick.addEventListener("click", alertBtn);
+
+
+    btnClick.addEventListener("click", alertBtn);
+    btnRemove.addEventListener("click", removeBtn);
+    btnRegister.addEventListener('click', registerBtn);
+
+</script>
+
+</body>
+</html>

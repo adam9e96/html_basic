@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 핸들러 제거</title>
+</head>
+<body>
+<button>Click me!</button>
+<script>
+    'use strict';
+    /*
+     * 이벤트 핸들러 제거.
+     * removeEventListener 메서드에 인수로 전달한 이벤트 핸들러는
+     * addEventListener 메서드에 인수로 전달한 등록 이벤트 핸들러와 동일한 함수여야 함.
+     * 따라서 익명함수를 이벤트 핸들러로 등록한 경우에는 제거할 수 없음.
+     *
+     * 단, 기명 이벤트 핸들러 내부에서 removeEventListener 메서드를 호출하여 이벤트 핸들러를 제거하는 것은 가능.
+     * 이 때 이벤트 핸들러는 단 한 번만 호출.
+     */
+    const btn = document.querySelector('button');
+
+    // 익명함수에 이벤트를 제거할려면 removeEvent를 사용해야 하고 익명함수인데도 이름을 부여해야함.
+    btn.addEventListener("click", function foo() {
+        console.log('button click');
+        // 이벤트 핸들러를 제거. 따라서 이벤트 핸들러는 단 한번만 호출.
+        btn.removeEventListener("click", foo);
+    });
+    // 한번찍고 바로 이벤트 해제됨.
+
+</script>
+</body>
+</html>

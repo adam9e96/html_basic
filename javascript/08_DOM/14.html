@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        /*
+         * 문서 객체 이동하기
+         * appendChild() 메소드를 사용하면 문서 객체를 이동할 수도 있음.
+         * 문서 객체를 다른 문서 객체에 추가하면 문서 객체가 이동.
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            // 문서 객체 읽어 들이고 생성하기
+            const divA = document.querySelector('#first'); // id 속성이 first 인 태그를 반환
+            const divB = document.getElementById('second'); // id 속성이 second 인 태그를 반환 <-- id 한정해서 얘가 속도는 더 빠름
+            console.log(divA);
+            console.log(divB);
+
+            const h1 = document.createElement('h1'); // h1 태그를 생성
+            console.log(h1);
+            h1.textContent = '이동하는 h1 태그';
+            console.log(h1)
+
+            // 서로 번갈아 가면서 실행하는 함수를 구현.
+            const toFirst = () => {
+                divA.appendChild(h1); // h1을 divA에 추가
+                setTimeout(toSecond, 1000); // 1초 후에 toSecond() 함수를 실행
+            }
+            // console.log(divA.appendChild(h1))
+            const toSecond = () => {
+                divB.appendChild(h1); // h1을 divB에 추가
+                setTimeout(toFirst, 1000); // 1초 후에 toFirst() 함수를 실행
+            }
+            toFirst();
+            // console.log(toFirst);
+        });
+    </script>
+</head>
+<body>
+<div id="first">
+    <h1>첫 번째 div 태그 내부</h1>
+</div>
+<hr>
+<div id="second">
+    <h1>두 번째 div 태그 내부</h1>
+</div>
+</body>
+</html>

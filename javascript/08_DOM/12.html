@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+
+        버튼을 클릭하면 목록의 색상이 버튼 색상으로 변하도록 만들기
+         */
+        document.addEventListener('DOMContentLoaded',() =>{
+            const btns = document.querySelectorAll('div button');
+            const fruits = document.querySelectorAll('ul li');
+            const colors = ['red','orange','yellow'];
+
+            btns.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    fruits.forEach((item) => {
+                        item.style.color = colors[index];
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<ul>
+    <li id="apple">apple</li>
+    <li id="banana">banana</li>
+    <li id="orange">orange</li>
+</ul>
+<div>
+    <button>red</button>
+    <button>orange</button>
+    <button>yellow</button>
+</div>
+
+</body>
+</html>

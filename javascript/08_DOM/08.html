@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+
+        * 스타일 조작하기
+        자바스크립트 style 속성들의 이름이 CSS에서 사용할 때와 차이가 있음.
+        자바스크림트에서는 -가 연산자이고, 식별자에 사용할 수 없어서 두 단어의 조합은 케멀 케이스로 표현.
+
+        background-color : backgroundColor
+        text-align : textAlign
+        font-size : fontSize
+
+        스타일을 조정하는 방법.
+        h1.style.backgroundColor -> 이 형태를 가장 많이 사용.
+        ht.style['backgroundColor']
+        ht.style['background-color']
+         */
+        document.addEventListener('DOMContentLoaded',() =>{
+            const divs = document.querySelectorAll('body > div');
+
+            divs.forEach((div, index) => { // div 개수 만큼 반복 출력.
+                console.log(div,index);
+                const val = index * 10; // index 는 0부터 24까지 반복
+                div.style.height = `10px` // 크기를 지정할 때는 반드시 단위를 붙여줘야함.
+
+                div.style.backgroundColor = `rgba(${val},${val},${val})`;
+                // div.style.backgroundColor = `rgba(0,0,${val})`;
+                // div.style.backgroundColor = `rgba(0,${val},0)`;
+                // div.style.backgroundColor = `rgba(${val},0,0)`;
+            });
+        });
+    </script>
+</head>
+<body>
+        <!-- div 태그 25개 -->
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+</body>
+</html>

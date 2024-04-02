@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    'use strict';
+    /*
+     * 문서 객체 가져오기
+     * document.head, document.body, document.title 등을 이ㅛㅇㅇ.
+     *
+     * head 와 body 요소 내부에 만든 다른 요소들은 다음과 같은 별도의 메소드를 사용해서 접근.
+     * document.querySelector(선택자) : 요소를 하나만 추출.
+     * document.querySelectorAll(선택자) : 선택자에 해당하는 모든 문서 객체를 배열로 가져옴.
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // h1
+        const header = document.querySelector('h1'); // 요소를 읽어들임. 제일 먼저 나오는 요소 하나만 가져옴.
+        // 텍스트와 스타일을 변경
+        header.textContent = 'HEADERS';
+        header.style.color = 'white';
+        header.style.backgroundColor = 'black';
+        header.style.padding = '10px';
+        header.style.borderRadius = '10px';
+
+        // h2
+        const headerAll = document.querySelectorAll('h2'); // 요소를 읽어들임
+        // console.log(headerAll);
+        headerAll.forEach((item) => { // 일반적으로 forEach() 메소드를 사용해서 반복을 돌림.
+            item.textContent = 'headerAll';
+            item.style.color = 'red';
+            item.style.backgroundColor = 'black';
+            item.style.padding = '20px';
+            item.style.borderRadius = '10px';
+        });
+
+        // // 1. for 문을 사용해서 글자색을 빨강으로 변경
+        for (let i = 0; i < headerAll.length; i++) {
+            headerAll[i].style.color = 'pink';
+        }
+        // // 2. for in 문을 사용해서 글자색을 파랑으로 변경.
+        for (let idx in [...headerAll]) { // 전개연산자를 사용해서 배열로 변환.
+            headerAll[idx].style.color = 'blue';
+        }
+
+        // // 3. for of 문을 사용해서 글자색을 주황으로 변경.
+        for (const item of headerAll) {
+            item.style.color = 'orange';
+        }
+    });
+</script>
+
+<body>
+<h1></h1>
+<!--
+<h1 style="color: white; background-color: black; padding: 10px; border-radius: 10px;">HEADERS</h1>
+-->
+<h1>2</h1>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+</body>
+</html>

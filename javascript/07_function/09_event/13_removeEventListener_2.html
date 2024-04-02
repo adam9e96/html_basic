@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 핸들러 제거#1</title>
+</head>
+<body>
+<button>Click me!</button>
+<script>
+    /*
+     * 이벤트 핸들러 제거.
+     * addEventListener 메서드로 등록한 이벤트 핸들러를 제거할려면 EventTarget.prototype.removeEventListener() 메서드를 사용.
+     * removeEventListener 메서드에 전달할 인수는 addEventListener 메서드와 동일.
+     */
+    const btn = document.querySelector('button');
+
+    const handleClick = () => console.log('button click');
+
+    // 이벤트 핸들러 등록
+    btn.addEventListener("click", handleClick);
+
+    // 이벤트 핸들러
+    btn.removeEventListener("click", handleClick, true); // <-- 실패
+</script>
+</body>
+</html>

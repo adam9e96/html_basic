@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>Click!</button>
+<button>Remove!</button>
+<button>Register!</button>
+<script>
+    // 1. querySelector
+    let count = 0;
+    const countFunction = () => {
+        count++;
+        alert(`${count}번 실행됨`);
+    };
+    const dtnClick = document.querySelector("button");
+    dtnClick.addEventListener("click", countFunction);
+
+    const removeBtn = () => {
+        dtnClick.removeEventListener("click", countFunction);
+    };
+
+    const dtnRemove = document.querySelector("button:nth-child(2)");
+    dtnRemove.addEventListener("click", removeBtn); // This line was corrected
+
+
+</script>
+
+</body>
+</html>
