@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        /*
+         *  * 키보드 이벤트
+         * keydown : 키가 눌릴 때 실행. 키보드를 꾹 누르고 있을 때도, 입력될 때도 실행.
+         * keypress : 키가 입력되었을 때 실행. 웹 브라우저에 따라서 아시아권의 문자를 제대로 처리 못하는 문제가 있음.
+         * keyup : 키보드에서 키가 떨어질 때 실행.
+         */
+        // 늠은 글자수 출력하기
+        document.addEventListener("DOMContentLoaded", () => {
+            const h1 = document.querySelector('h1');
+            const textarea = document.querySelector('textarea');
+            console.log(h1);
+            console.log(textarea);
+            // let counter = 0;
+            textarea.addEventListener('keyup', () => { // 키보드에서 키가 떨어질 때 실행
+                console.log(textarea.value);
+                console.log(textarea.value.length);
+                const length = textarea.value.length;
+                // value 는 자주 사용함 textarea, input 태그 등에서 사용자가 입력한 값을 보려면 value 를 사용해야 함.
+                // counter++;
+                // console.log(counter);
+                h1.textContent = `글자 수 : ${length}`;
+            });
+
+            // 웹페이지 실행 시 해당 태그에 커서가 가있게 할려면
+            textarea.focus();
+        });
+    </script>
+</head>
+<body>
+<h1>글자 수: 0</h1>
+<label>
+    <textarea></textarea>
+</label>
+</body>
+</html>

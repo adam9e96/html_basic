@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        /*
+         * 이벤트 연결 해제하기
+         * 이벤트를 제거할 때는 removeEventListener() 메소드를 사용.
+         * 문서 객체.removeEventListener(이벤트 이름, 이벤트 리스너);
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            // 실행할 JS 코드
+            const btnConnect = document.getElementById("connect");
+            const btnDisConnect = document.getElementById("disconnect");
+            const h1 = document.querySelector("h1");
+            const p = document.querySelector("p");
+
+            // test
+            console.log(btnConnect);
+            console.log(btnDisConnect);
+            console.log(h1);
+            console.log(p);
+
+            let counter = 0;
+            let isConnect = false; // 이벤트를 여러 번 연결되지 않게
+
+            const listener = (event) => { // 이벤트를 제거하려면 이벤트 리스너를 변수 또는 상수로 가지고 있어야 함.
+                h1.textContent = `클릭 횟수: ${counter++}`;
+            }
+
+            btnConnect.addEventListener("click", () => {
+                if (isConnect === false) {
+                    console.log(`btnConnect : ${isConnect}`);
+
+                    // 동작1 : h1 태그 counter 조작 가능
+                    // 1. h1에 이벤트 리스너 등록
+                    h1.addEventListener("click", listener);
+
+                    // 동작2 : button 이벤트 연결 제거
+                    // 2. bitConnect 버튼 안보이도록
+                    btnConnect.style.display = 'none';
+                    btnDisConnect.style.display = 'block';
+
+
+                    // 동작3 : p 태그 이벤트 연결 상태를 해제 -> 연결
+                    // 3. p의 내용물 이벤트 연결 상태를 해제 -> 연결로 변경
+                    p.textContent = '이벤트 연결 상태: 연결';
+                    isConnect = true;
+                }
+            });
+
+            btnDisConnect.addEventListener("click", () => {
+                if (isConnect === true) {
+                    console.log(`btnDisConnect : ${isConnect}`);
+
+                    // 1. h1 이벤트 리스너 제거
+                    h1.removeEventListener("click", listener); // 해제할 때 이벤트 리스너를 사용
+
+                    // 2. btnConnect 버튼 보이도록
+                    btnDisConnect.style.display = 'none';
+                    btnConnect.style.display = 'block';
+
+                    // 3. p의 내용물을 이벤트 연결 상태를 연결 -> 해제 변경
+                    p.textContent = '이벤트 연결 상태: 해제';
+                    isConnect = false;
+                }
+            });
+        });
+
+    </script>
+    <style>
+        h1 {
+            /* 클릭을 여러 밴 헀을 때 글자가 선택되는 것을 막기 위한 스타일. 드래그가 안됨 */
+            user-select: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>클릭 횟수: 0</h1>
+<button id="connect">이벤트 연결</button>
+<button id="disconnect">이벤트 제거</button>
+<p>이벤트 연결 상태: 해제</p>
+</body>
+</html>

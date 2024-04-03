@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * form 태그 관련
+         * 이메일 형식 확인하기
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
+            // console.log(input);
+            // console.log(p);
+
+            const isEmail = (value) => { // 이메일인지 검사하는 함수
+                // 골뱅이를 갖고 있고 && 골뱅이 뒤에 점이 있다면
+                console.log(value.indexOf('@')); // test1
+                console.log(`value.split('@') 0번인덱스 : ${value.split('@')[0]}`);
+                console.log(`value.split('@') 1번인덱스 : ${value.split('@')[1]}`);
+                console.log(`테스트 최종 : ${value.split('@')[1].indexOf('.')}`);
+
+                return (value.indexOf('@') > 1) && (value.split('@')[1].indexOf('.') > 1);
+                // indexOf 는 값이 있으면 인덱스값을 반환, 없으면 -1반환
+                // 그래서 첫글자부터 @를 쓰면 안됨
+                // split @를 기준으로 양옆을 배열로
+            };
+            input.addEventListener('keyup', (event) => {
+                const value = event.currentTarget.value;
+                //const value = input.value; // 가능
+                console.log(value);
+
+                if (isEmail(value)) {
+                    p.style.color = 'green';
+                    p.textContent = `이메일 형식입니다: ${value}`;
+                } else {
+                    p.style.color = 'red';
+                    p.textContent = `이메일 형식이 아닙니다. ${value}`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="text">
+<p></p>
+</body>
+</html>

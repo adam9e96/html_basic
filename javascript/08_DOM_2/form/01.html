@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * form 태그 관련
+         * 입력 양식을 기반으로 inch 를 cm 단위로 변환하는 프로그램
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            const input = document.querySelector('input');
+            const btn = document.querySelector('button');
+            const p = document.querySelector('p');
+
+
+            console.log(input);
+            console.log(btn);
+            console.log(p);
+
+            // 로직
+            // const cm = inch * 2.54;
+            btn.addEventListener("click", () => {
+                const inch = Number(input.value); // 입력을 숫자로 변환.
+
+                if (isNaN(inch)) { // 숫자가 아니라면 바로 리턴. isNaN()함수 : 숫자인지 확인. not a number
+                    p.textContent = '숫자를 입력해주세요';
+                    return; // 종료 목적의 리턴
+                }
+
+                console.log(inch);
+                // 변환해서 출력
+                const cm = inch * 2.54;
+                console.log(cm);
+                p.textContent = `${cm} cm`;
+            });
+
+        });
+    </script>
+</head>
+<body>
+<label>
+    <input type="text">
+</label> inch<br>
+<button>계산</button>
+<p></p>
+</body>
+</html>

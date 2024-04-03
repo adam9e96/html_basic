@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         *  * 키보드 이벤트와 관련된 이벤트 속성
+         * code : 입력한 키
+         * keyCode : 입력한 키를 나타내는 숫자
+         * altKey : alt 키를 눌렀는지
+         * ctrlKey : ctrl 키를 눌렀는지
+         * shiftKey : shift 키를 눌렀는지
+         *
+         * code 속성은 입력한 키를 나타내는 문자열이 들어있고
+         * altKey, ctrlKey, shiftKey 속성은 해당 키를 눌렀는지 불 자료형이 들어 있음.
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            const h1 = document.querySelector('h1');
+            console.log(h1);
+            const print = (event) => {
+                let output = '';
+                output += `alt: ${event.altKey}<br>`; // 이벤트가 발생하면 불 값을 반환
+                output += `ctrl: ${event.ctrlKey}<br>`;
+                output += `shift: ${event.shiftKey}<br>`;
+
+                // event.code 가 있으면 event.code 를 출력하고, undefined 라면 event.keyCode 를 출력
+                output += `code: ${typeof (event.code) !== 'undefined' ? event.code : event.keyCode}<br>`
+
+                // h1.focus();
+                h1.innerHTML = output;
+
+            }
+            document.addEventListener('keydown', print); // 키가 눌릴 때 출력
+            document.addEventListener('keyup', print); // 키가 떨어질 때 출력
+        });
+
+    </script>
+</head>
+<body>
+<h1></h1>
+
+</body>
+</html>
