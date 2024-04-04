@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * 기본 이벤트 막기
+         *
+         * 체크 떄만 링크 활성화 하기
+         *
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 페이지가 로딩된 후에 a 태그 링크 이벤트 막기.
+            const a = document.querySelector('a');
+            console.log(a)
+            let status = false;
+
+            a.addEventListener("click", (event) => {
+                if (!status) {
+                    event.preventDefault(); // status 가 false 가 아니면 링크의 기본 이벤트 제거
+                }
+            });
+            // 2. 체크 때만 링크 활성화 하기
+            const checkbox = document.querySelector('input');
+            console.log(checkbox);
+            checkbox.addEventListener('change', (event) => {
+                // status = event.currentTarget
+                console.log(event.currentTarget.checked)
+                    status = event.currentTarget.checked;
+                // if (event.currentTarget.checked) {
+                // }
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="checkbox">
+<span>링크 활성화</span>
+<br>
+<a href="https://naver.co.kr">네이버</a>
+</body>
+</html>

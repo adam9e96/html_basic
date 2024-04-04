@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         *
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            const p = document.querySelector('p')
+            const select = document.querySelector('select')
+            console.log(p)
+            console.log(select)
+
+            select.addEventListener("change", (event) => {
+                // 이벤트 객체 값 확인
+                // console.log(event)
+                // console.log(event.currentTarget.value)
+                const options = event.currentTarget.options; // option 을 배열로 변환
+                const index = event.currentTarget.selectedIndex; // 선택한 index 를 추출
+                // 위 2개만 있으면 충분함
+                console.log(options);
+                console.log(index);
+                p.textContent = `선택: ${options[index].textContent}` // 선택한 option 태그를 추출
+
+
+            })
+
+        });
+    </script>
+</head>
+<body>
+<select>
+    <option>떢볶이</option>
+    <option>순대</option>
+    <option>오뎅</option>
+    <option>튀김</option>
+</select>
+<p>선택: 떡볶이</p>
+</body>
+</html>

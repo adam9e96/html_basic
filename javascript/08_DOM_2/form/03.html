@@ -3,8 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        /*
+         * form 태그 관련
+         * input 태그를 이용해서 휴대폰 번호의 유효성을 검사하는 자바스크립트ㅡㄹ 작성
+         * 숫자 3자리 + '-' + 숫자 4자리 +'-' + 숫자 4자리 형식이 맞는지 확인
+         *
+         * 1. 첫번째 '-' 의 인덱스 값이 3
+         * 2. 두번째 '-' 의 인덱스 값이 8
+         * 3 . 세번쨰 '-' 의 인덱스 값이 13
+         * 4. '-' 을 제외한 문자열이 숫자
+         * 5. '-'을 제외한 문자열의 개수가 11
+         * 6. 0 ~ 2번 인덱스 문자열은 '010'
+         *
+         * 특수문자 제거 참고.
+         * https://lkt01010.tistory.com/222
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
+            // console.log(input);
+            // console.log(p);
+
+            const isPhoneNumber = (value) => { //올바른 휴대폰 번호 인지 검사하는 함수
+                // console.log(`0번 인덱스 : ${value.split('-')[0]}`)
+                // console.log(`1번 인덱스 : ${value.split('-')[1]}`)
+                // console.log(`2번 인덱스 : ${value.split('-')[2]}`)
+
+
+                // 4. '-' 을 제외한 문자열이 숫자
+                const parts = value.split('-');
+                console.log(`split- : ${parts}`)
+                const isNumber = value.replace(/\-/g, '');
+                const isNum = !isNaN(isNumber) && isNumber.length === 11
+                // console.log(`isNumber 테스트${isNumber}`)
+                // 01048072708
+
+                // 0번째 인덱스 값이 3 && 0번째 인덱스 값이 010 && 1번째 인덱스 길이가 4 && 2번째 인덱스 길이가 4
+                const trueNumber = parts.length === 3 && parts[0] === '010' && parts[1].length === 4 && parts[2].length === 4;
+                return trueNumber && isNum
+            }
+            // ['010', '4807', '2708']
+
+            input.addEventListener('keyup', (event) => {
+                const value = event.currentTarget.value;
+                // if (value.indexOf('-') ===3){
+                //     console.log(true)
+                // }
+                // console.log((value.split('-'))[2])
+                // console.log(value.split('-'))
+                // console.log(event.currentTarget.value);
+                // console.log(value.split('-')[2] >4)
+                // let nanCheck = value
+                // if (value.split('-')[1] > 3) {
+                //     console.log('1번인덱스')
+                // }
+
+                if (isPhoneNumber(value)) {
+                    p.style.color = 'green';
+                    p.textContent = `휴대폰 형식입니다: ${value}`;
+                } else {
+                    p.style.color = 'red';
+                    p.textContent = `휴대폰 형식이 아닙니다. ${value}`;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-
+<label>
+    <input type="text">
+</label>
+<p></p>
 </body>
 </html>

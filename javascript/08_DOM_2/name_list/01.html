@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/name_list.css">
+    <script>
+        /*
+         * 참가 신청 명단 프로그램 만들기
+         * 1. 새 노드 추가하고 표시하기
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 새 노드 추가하고 표시하기
+            // -> input 태그에 문자열을 입력하고 [신청]버튼을 클릭하면, nameList 에 문자열이 추가
+            const userName = document.querySelector('#userName');
+            const btn = document.querySelector('button');
+            const nameList = document.querySelector('#nameList');
+            // console.log(input);
+            // console.log(button);
+            // console.log(div);
+            // console.log(input.value);
+            btn.addEventListener('click', (event) => {
+                // 1-1. input 태그에 있는 문자열을 들고와서 새로운 요소 만들기
+                // 기본이벤트 (submit) 막기
+                event.preventDefault(); // submit 방지
+                // 1-2. 새로운 요소를 만들고, input 태그에 있는 문자열을 추가
+                const content = document.createElement("p");
+                content.textContent = userName.value; // 텍스트 필드 값을 복사
+
+                console.log(content);
+                // 2. nameList에 새로 만든 요소를 추가하기
+                nameList.appendChild(content); // p 요소를 #nameList의 자식 요소로 만들기
+
+                // 3. input태그에 있는 문자열 제거하기
+                userName.value = ''; // 텍스트 필드 지우기
+
+                // 4.
+
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container">
+    <h1>참가 신청</h1>
+    <form action="">
+        <label for="userName"></label><input type="text" id="userName" placeholder="이름" required>
+        <button>신청</button>
+    </form>
+    <hr>
+    <div id="nameList"></div>
+</div>
+
+</body>
+</html>

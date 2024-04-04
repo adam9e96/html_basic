@@ -30,8 +30,8 @@
             input.addEventListener('keyup', (event) => {
                 const value = event.currentTarget.value;
                 //const value = input.value; // 가능
-                console.log(value);
-
+                // console.log(value);
+                // console.log(event.currentTarget.value);
                 if (isEmail(value)) {
                     p.style.color = 'green';
                     p.textContent = `이메일 형식입니다: ${value}`;
@@ -44,7 +44,9 @@
     </script>
 </head>
 <body>
-<input type="text">
+<label>
+    <input type="text">
+</label>
 <p></p>
 </body>
 </html>

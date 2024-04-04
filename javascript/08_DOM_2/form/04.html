@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
+
+            const isPhoneNumber = (value) => {
+                // Split the input value by '-'
+                const parts = value.split('-');
+                // Check if the split parts match the format
+                const hasCorrectFormat = parts.length === 3 && parts[0] === '010' && parts[1].length === 4 && parts[2].length === 4;
+                // Combine all parts excluding '-' and check if they are numeric and total length is 11
+                const allDigits = parts.join('');
+                const isNumeric = !isNaN(allDigits) && allDigits.length === 11;
+                return hasCorrectFormat && isNumeric;
+            }
+
+            input.addEventListener('keyup', (event) => {
+                const value = event.currentTarget.value;
+                if (isPhoneNumber(value)) {
+                    p.style.color = 'green';
+                    p.textContent = `휴대폰 형식입니다: ${value}`;
+                } else {
+                    p.style.color = 'red';
+                    p.textContent = `휴대폰 형식이 아닙니다: ${value}`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<label>
+    <input type="text" placeholder="010-XXXX-XXXX">
+</label>
+<p></p>
+</body>
+</html>
