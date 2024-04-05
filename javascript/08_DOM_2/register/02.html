@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/register.css">
+    <script>
+        /*
+         * 회원 가입 페이지 입력 값 검증하기
+         * 1. [가입하기] 버튼을 클릭하면 아이디 글자 수 확인하기 v
+         *
+         * 2. 비밀번호 환인하기
+         * 1) 비밀번호 필드에 입력한 내용의 글자 수가 8자리 이상인지 확인. v
+         * 2) 비밀번호 확인 필드에 입력한 값이 비밀번호의 필드 값과 같은지 확인.
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            const frmRegister = document.getElementById('register'); // 폼태그
+            const userId = document.getElementById('user-id');
+            const btnSubmit = document.querySelector('input[type=button]');
+            const pw1 = document.querySelector('input[type=password]');
+            const pw2 = document.querySelector('#user-pw2');
+
+            // console.log(btnSubmit.value);
+            // console.log(frmRegister);
+            // console.log(pw1);
+
+            // 1. 아이디 관련 로직 : 4 ~ 15 자리 범위 인지
+            btnSubmit.addEventListener('click', function () {
+                console.log(document.querySelector('#user-id').value);
+                console.log(document.querySelector('#user-id').value.length);
+                console.log('눌림');
+                // if (!btnSubmit.checked) {
+                if (userId.value.length <= 3 || userId.value.length >= 16) {
+                    // userId 필드 내용의 길이가 4미만이거나 15보다 더 큰 경우 실행
+                    alert('4~15자리로 입력하세요.'); // 오류 메시지 출력
+                    /*
+                     * select() : 사용자가 기존에 입력한 값을 선택
+                     * focus() : 사용자가 기존에 입력한 값을 지우고 새로운 값을 입력하도록 텍스트 필드에 커서를 가져다 놓음.
+                     */
+                    userId.select();
+                    // 해당 함수 (4~15를 벗어난) 호출되었을떄는 submit 방지
+                    return;
+                }
+                // 버튼에 타입을 submit 타입으로 하기보다 이렇게 버튼을 클릭해서 여기서 submit을 실행하는경우
+                frmRegister.submit();
+            });
+
+            // 2-1. 비밀번호 관련 로직 : 8 자리 이상인지
+            pw1.addEventListener('change', function () {
+                if (pw1.value.length <= 7) {
+                    alert('비밀번호는 8자리 이상이어야 합니다.'); // 오류 메시지 표시
+                    pw1.value = ''; // 비밀번호 필드 지움.
+                    pw1.focus(); // 비밀번호를 다시 입력할 수 있도록 포커싱
+                }
+
+            });
+
+            // 2-2. 비밀번호 확인 필드에 입력한 값이 비밀번호의 필드 값과 같은지 확인.
+            pw2.addEventListener('change', function () {
+                if (pw1.value !== pw2.value) {
+                    alert('암호가 다릅니다. 다시 입력하세요.');
+                    pw2.value = ''; // 비밀번호 필드 지움.
+                    pw2.focus(); // 비밀번호를 다시 입력할 수 있도록 포커싱
+                }
+            });
+
+            // 3. 비밀번호 보이기 ( on/off)
+            const btnTrans = document.querySelector('span.trans');
+            // console.log(btnTrans);
+
+            // case1 . 불린값을 이용
+            // let psState = false;
+            btnTrans.addEventListener('click', function (e) {
+                // if (psState) {
+                //     pw1.setAttribute('type', 'password');
+                //     e.currentTarget.textContent = '비밀번호로 변환';
+                //     psState = false;
+                //
+                // } else {
+                //     pw1.setAttribute('type', 'text');
+                //     e.currentTarget.textContent = '패스워드로 변환';
+                //     psState = true;
+                // }
+
+                // case2. getAttribute 이용
+                if (pw1.getAttribute('type') === 'password') {
+                    pw1.setAttribute('type', 'text')
+                    e.currentTarget.textContent = '패스워드로 변환';
+                } else {
+                    pw1.setAttribute('type', 'password')
+                    e.currentTarget.textContent = '문자로 변환';
+                }
+            });
+        });
+    </script>
+    <style>
+        span {
+            /* 클릭을 여러 번 했을 때 글자가 선택되는 것을 막기 위한 스타일. 드래그가 안됨 */
+            /*  user-select 속성은 사용자가 텍스트의 일부를 선택할 수 있는지 여부를 제어 */
+            user-select: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>회원 가입</h1>
+    <form action="#" id="register">
+        <ul id="user-info">
+            <li>
+                <label for="user-id" class="field">아이디</label>
+                <input type="text" name="user-id" id="user-id" placeholder="4~15자리로 입력" required>
+            </li>
+            <li>
+                <label for="email" class="field">이메일</label>
+                <input type="email" name="email" id="email" required>
+            </li>
+            <li>
+                <label for="user-pw1" class="field">비밀번호</label>
+                <input type="password" name="user-pw1" id="user-pw1" placeholder="8자리 이상" required>
+                <span class="trans">문자로 변환</span>
+            </li>
+            <li>
+                <label for="user-pw2" class="field">비밀번호 확인</label>
+                <input type="password" name="user-pw2" id="user-pw2" required>
+            </li>
+            <li>
+                <label class="field">메일링 수신</label>
+                <label class="r"><input type="radio" value="yes" name="mailing">예</label>
+                <label class="r"><input type="radio" value="no" name="mailing">아니요</label>
+            </li>
+        </ul>
+        <ul id="buttons">
+            <li>
+                <input type="button" class="btn btnBlack" value="가입하기">
+            </li>
+            <li>
+                <input type="reset" class="btn btnGray" value="취소">
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>

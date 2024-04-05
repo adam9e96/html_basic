@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/name_list.css">
+    <script>
+        /*
+         * 참가 신청 명단 프로그램 만들기
+         * 1. 새 노드 추가하고 표시하기
+         *
+         * 2. 추가시 맨위로 가도록 변경.
+         */
+        // DOM이 완전히 로드되면 함수 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 새 노드 추가하고 표시하기
+            // -> input 태그에 문자열을 입력하고 [신청]버튼을 클릭하면, nameList 에 문자열이 추가
+
+            // 사용자 이름 입력 필드, 버튼, 명단을 담을 div 요소 선택
+            const userName = document.querySelector('#userName');
+            const btn = document.querySelector('button');
+            const nameList = document.querySelector('#nameList');
+
+            // '신청' 버튼 클릭 이벤트 리스너 추가
+            btn.addEventListener('click', (event) => {
+                // 1-1. input 태그에 있는 문자열을 들고와서 새로운 요소 만들기
+                // 기본이벤트 (submit) 막기
+                event.preventDefault(); // submit 방지
+
+                // 1-2. 새로운 요소를 만들고, input 태그에 있는 문자열을 추가
+                // 새로운 p 요소 생성
+                const item = document.createElement("p");
+                item.textContent = userName.value; // 텍스트 필드 값(사용자입력값)을 p태그에 복사
+
+                // 2024.04.05
+                // 1) span 태그 생성 v
+                // 2) span 태그에 X 문자열 포함 v
+                // 3) span 태그에 del 이라는 클래스 추가
+                // 4) span 태그를 p 태그에 자식 요소로 추가
+                // console.log(del);
+                // <p>aaaa<span class="del">X</span></p>
+
+                // 삭제 버튼을 위한 span 요소 생성
+                const dtnDel = document.createElement("span"); // X버튼을 넣을 span 태그 추가
+                dtnDel.textContent = "X";
+                dtnDel.setAttribute('class', 'del');
+                item.appendChild(dtnDel);
+                // 새로 생성된 요소에 이벤트를 추가할 경우에는 생성될 때 마다 이벤트를 등록해야 함.
+                // span 요소 (삭제 버튼)에 클릭 이벤트 리스너 추가
+                dtnDel.addEventListener("click", function (event) {
+                    // alert(dtnDel.parentNode.textContent); // 이 자리에 삭제 기능이 들어감
+                    // '현재 노드(this)의 부모 노드의 부모 노드' 를 찾아 '현재 노드(this)의 부모 노드(p 노드)' 삭제
+                    // dtnDel.parentNode.parentNode.removeChild(dtnDel.parentNode);
+                    // -> 클릭된 요소 (this, 즉 span)의 부모 노드 (p)를 찾아 그것의 부모 노드에서 제거
+                    alert(confirm("정말 삭제하시겠습니까"))
+                    {
+                        // '현재 노드(this)의 부모 노드
+                        // this.parentNode.parentNode.removeChild(this.parentNode);
+                        event.currentTarget.parentNode.parentNode.removeChild(event.currentTarget.parentNode);
+                        /*
+                         * 화살표 함수와 일반 함수는 this 가 다름.
+                         * 1) this 를 사용하려면 이벤트 리스너의 콜백 함수에서 화살표 함수를 사용하지 앟ㄴ거나
+                         * 2) this 대신 event.currentTarget 을 사용
+                         */
+                    }
+                    // 이벤트 걸린건 span인데 삭제는 부모태그인 p 태그까지 삭제해야됨
+                });
+                item.appendChild(dtnDel); // 생성한 span 요소를 p 요소의 자식으로 추가
+                // console.log(item);
+
+                // 2. nameList에 새로 만든 요소를 추가하기
+                // nameList.appendChild(item); // p 요소를 #nameList의 자식 요소로 만들기
+
+                // 명단 리스트(div#nameList)의 맨 앞에 새로운 항목(p 요소) 추가
+                // 기존 항목이 있으면 그 항목 앞에, 없으면 명단 리스트에 새로운 항목 추가
+                nameList.insertBefore(item, nameList.childNodes[0]); // p 요소를 #nameList 맨 앞에 추가하기
+                // content 를 넣는데 nameList.childNodes[0] 보다 앞에 넣어라는 소리임
+
+                //3. 입력 필드 초기화
+                userName.value = ''; // 텍스트 필드 지우기
+
+
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container">
+    <h1>참가 신청</h1>
+    <form action="">
+        <label for="userName"></label><input type="text" id="userName" placeholder="이름" required>
+        <button>신청</button>
+    </form>
+    <hr>
+    <div id="nameList">
+        <!-- 동적으로 추가될 명단 -->
+        <!--        <p>bbb</p>--> <!-- 2024.04.04 -->
+        <!--        <p>aaaa<span class="del">X</span></p>-->  <!-- 2024.04.04 -->
+    </div>
+</div>
+
+</body>
+</html>

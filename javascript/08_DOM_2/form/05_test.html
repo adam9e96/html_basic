@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="mySelect">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="cherry">Cherry</option>
+</select>
+
+<p id="demo">Your favorite fruit: Apple</p>
+
+<script>
+    document.getElementById("mySelect").addEventListener("change", function() {
+        var selectedOption = this.options[this.selectedIndex].text;
+        document.getElementById("demo").textContent = "Your favorite fruit: " + selectedOption;
+    });
+</script>
+
+</body>
+</html>

@@ -33,7 +33,7 @@
 
                 // 4. '-' 을 제외한 문자열이 숫자
                 const parts = value.split('-');
-                console.log(`split- : ${parts}`)
+                console.log(`split('-') 테스트 : ${parts}`)
                 const isNumber = value.replace(/\-/g, '');
                 const isNum = !isNaN(isNumber) && isNumber.length === 11
                 // console.log(`isNumber 테스트${isNumber}`)

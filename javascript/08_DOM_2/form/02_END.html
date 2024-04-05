@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
+            const isEmail = (email) => { // 이메일인지 검사하는 함수
+                return (email.indexOf('@') > 1) && (email.split('@')[1].indexOf('.') > 1);
+            };
+            input.addEventListener('keyup', (event) => {
+                const value = event.currentTarget.value;
+                console.log(value);
+                if (isEmail(value)) {
+                    p.style.color = 'green';
+                    p.textContent = `이메일 형식입니다: ${value}`;
+                } else {
+                    p.style.color = 'red';
+                    p.textContent = `이메일 형식이 아닙니다. ${value}`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<label>
+    <input type="text">
+</label>
+<p></p>
+</body>
+</html>
