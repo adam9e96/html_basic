@@ -6,8 +6,43 @@
     <script>
         const kor = 88, eng = 90, mat = 58, soc = 81, sci = 72;
         const total = kor + eng + mat + soc + sci; // 총점
-        // todo
-        // switch 문 써보기
+        const avg = total / 5; // 평균
+        console.log(avg); // 평균 점수 출력
+
+        // 평균 점수를 기준으로 학점 구간을 결정
+        let grade;
+        if (avg >= 90) {
+            grade = 'A';
+        } else if (avg >= 80) {
+            grade = 'B';
+        } else if (avg >= 70) {
+            grade = 'C';
+        } else if (avg >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        // switch 문을 사용해 학점 구간에 따라 메시지 출력
+        switch (grade) {
+            case 'A':
+                console.log('매우 우수합니다!');
+                break;
+            case 'B':
+                console.log('우수합니다!');
+                break;
+            case 'C':
+                console.log('보통입니다.');
+                break;
+            case 'D':
+                console.log('노력이 필요합니다.');
+                break;
+            case 'F':
+                console.log('많은 개선이 필요합니다.');
+                break;
+            default:
+                console.log('유효하지 않은 학점입니다.');
+        }
     </script>
 </head>
 <body>

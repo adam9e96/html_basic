@@ -26,7 +26,8 @@
 
                 // event.code 가 있으면 event.code 를 출력하고, undefined 라면 event.keyCode 를 출력
                 output += `code: ${typeof (event.code) !== 'undefined' ? event.code : event.keyCode}<br>`
-
+                console.log(`코드 : ${event.code}`);
+                console.log(`키코드 : ${event.keyCode}`);
                 // h1.focus();
                 h1.innerHTML = output;
 

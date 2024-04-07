@@ -7,21 +7,24 @@
         /*
          * if else 조건문
          */
-        const number = Number(prompt('숫자를 입력하세요!'));
+        // const number = Number(prompt('숫자를 입력하세요!'));
+
         // 형변환을 하지 않아도 프로그램 실행에는 문제가 없음
         // 조건식에서 0과 비교를 할 때 자동으로 형변환이 되어서 계산이 됨.
 
         // 이러한 부분이 자바 스크립트로 프로그램을 짤 때 문제가 되는 경우가 있어서 가급적 형변환을 하는 것을 추천.
+        const number = prompt('숫자를 입력하세요!');
 
-        // if (number < 0) {
-        //     alert('0이상의 숫자를 입력하세요!')
-        // } else {
-        //     document.write('입력한 숫자 : ' + number);
-        // }
+        console.log(typeof number); // string
+        if (number < 0) {
+            alert('0이상의 숫자를 입력하세요!')
+        } else {
+            document.write('입력한 숫자 : ' + number);
+        }
         console.log(typeof number); // string
 
         // 3항 연산자로 변경
-        document.write(number <0 ? '0이상의 숫자를 입력하세요!' : '입력한 숫자 : ' + number);
+        // document.write(number <0 ? '0이상의 숫자를 입력하세요!' : '입력한 숫자 : ' + number);
     </script>
 </head>
 <body>
