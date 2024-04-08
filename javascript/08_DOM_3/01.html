@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/get_form.css">
+    <script>
+        /*
+         * 다양한 폼 요소 다루기
+         * 1. 선택 (select) 목록에서 사용자가 선택한 옵션 항목 찾아내기
+         *
+         * 2. 라디오 버튼에 접근하기.
+         *
+         * 3. 체크박스에 접근하기
+         */
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // case 1
+            // const userName = document.getElementById('userName');
+            // console.log(userName);
+            const major = document.querySelector('select[name=major]');
+            console.log(major);
+            // select에 change 이벤트가 발생했을 때 발생
+            major.addEventListener('change', (e) => {
+                // 1. event 사용
+                console.log(e.currentTarget.value);
+                const options = e.currentTarget.options; // option 을 배열로 반환
+                const index = e.currentTarget.options.selectedIndex; // 선택한 index 추출
+                console.log(`options : ${options}`); // [object HTMLOptionsCollection]
+                console.log(`index : ${index}`); // 1
+
+                let selectText = options[index].textContent;
+                console.log(`selectText 콘솔 : ${selectText}`);
+                alert(`${selectText}을 선택헀습니다.`);
+
+                // 2. event 사용안하는 방식
+                // 사용자가 선택한 항목의 인덱스는 major.selectedIndex 를 통해 알아냄.
+                selectText = major.options[major.selectedIndex].textContent;
+                console.log(`selectText 로그 : ${selectText}`);
+                alert(`${selectText}을 선택헀습니다.`);
+
+            });
+
+
+            // case 2
+            // input에 가져올때 type말고도 name도 되므로 name이 있다면 name으로 하자
+            const subjects = document.querySelectorAll("input[name=subject]");
+            console.log(subjects);
+            subjects.forEach((subjects) => {
+                subjects.addEventListener('change', (e) => {
+                    const current = e.currentTarget;
+                    if (current.checked) {
+                        // 부모노트의 내용을 출력하는이유
+                        // 실제 value 값은영어이고 사용자에게 보여줄 값은 회화/문법/작문
+                        // 을 보여줘야 하므로 부모노드인 label인 textContent를 보여줘야함
+                        alert(`${current.parentNode.textContent} 를 선택했습니다.`);
+
+                        // 값(value) 을 들고 오는 경우
+                        alert(`${current.value}를 선택했습니다.`);
+                    }
+                });
+            })
+
+            // case 3 - 체크박스
+            const mailings = document.querySelectorAll('input[type=checkbox]');
+            console.log(mailings);
+            mailings.forEach((mailing) => {
+                // 3. checkbox에 change 이벤트가 발생했을 때 실행
+                mailing.addEventListener('change', (e) => {
+                    // console.log(e.currentTarget.checked);
+                    const current = e.currentTarget;
+                    if (current.checked) {
+                        // alert(`${current.value}를 선택했습니다.`);
+                        alert(`${current.parentNode.textContent}를 선택했습니다.`);
+                    } else {
+                        // alert(`${current.value}를 선택해제했습니다..`);
+                        alert(`${current.parentNode.textContent}를 선택해제했습니다.`);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container">
+    <h1>수강신청</h1>
+    <form name="testForm">
+
+        <fieldset>
+            <legend>신청인</legend>
+            <ul>
+                <li>
+                    <label class="reg" for="userName">이름</label>
+                    <input type="text" id="userName" name="userName" maxlength="50">
+                </li>
+                <li>
+                    <!--  서버에 넘어가는건 name, value -->
+                    <label class="reg" for="major">학과</label>
+                    <select name="major" id="major">
+                        <option>---- 학과 선택 ----</option>
+                        <option value="architect">건축공학과</option>
+                        <option value="mechanic">기계공학과</option>
+                        <option value="industrial">산업공학과</option>
+                        <option value="elect">전기전자공학과</option>
+                        <option value="computer">컴퓨터공학과</option>
+                        <option value="chemical">화학공학과</option>
+                    </select>
+                </li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>신청 과목</legend>
+            <p>이 달에 신청할 과목을 선택하세요.</p>
+            <label>
+                <input type="radio" name="subject" value="speaking">회화
+            </label>
+            <label>
+                <input type="radio" name="subject" value="grammar">문법
+            </label>
+            <label>
+                <input type="radio" name="subject" value="writing">작문
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>메일링</legend>
+            <p>메일로 받고 싶은 뉴스 주제를 선택해 주세요</p>
+            <label>
+                <input type="checkbox" name="mailing1" value="news">해외 단신
+            </label>
+            <label>
+                <input type="checkbox" name="mailing2" value="dialog">5분 회화
+            </label>
+            <label>
+                <input type="checkbox" name="mailing3ㄴ" value="pops">모닝팜스
+            </label>
+        </fieldset>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         * to do
+         * 글 등록 / 삭제 / 수정 기능
+         *
+         *
+         * 2. 등록 버튼 클릭시에 글이 등록 되도록 할 것.
+         * -> list 클래스의 중첩 ul에 등록
+         *
+         * 3. 등록시 조건
+         * 1) 글 등록이 된 후 폼 태그가 비워지도록
+         * 2) 할일과 날짜가 입력이 안된 경우 글 등록이 안되도록 (경고문을 발생하도록)
+         * 3) 날짜의 기본값은 오늘로
+         * 4) 이전 날짜는 선택이 안되도록 하기
+ */
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = document.querySelector('.add input[name=title]');
+            const dueDate = document.querySelector('.add input[name=dueDate]');
+            const btnAdd = document.querySelector('.add input[type=button]');
+            const list = document.querySelector('.list ul');
+
+            const initForm = () => {
+                title.value = '';
+                let today = new Date().toISOString().slice(0, 10);
+                dueDate.value = today;
+                dueDate.setAttribute('min', new Date().toISOString().slice(0, 10));
+
+            }
+            initForm();
+            // 날짜 입력 필드의 기본값과 최소값을 오늘로 설정
+
+            btnAdd.addEventListener('click', () => {
+                if (title.value === '') {
+                    alert('제목을 입력해주세요!.');
+                    title.focus();
+                } else if (dueDate.value === '') {
+                    alert('날짜를 선택해 주세요.')
+                    dueDate.focus();
+                }
+
+                let addItem = document.createElement('li');
+                addItem.innerHTML = `<ul>\n
+                    <li>${title.value}</li>\n\
+                    <li>${dueDate.value}</li>\n
+                    <li><input type="button" name="delete" value="삭제"></li>\n
+                </ul>`;
+
+                list.appendChild(addItem);
+
+                // 폼 초기화
+                initForm();
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        section {
+            width: 600px;
+            background: #ffffff;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .list, .add {
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+
+        li {
+            font-size: 16px;
+            color: #666;
+            padding-right: 10px;
+        }
+
+        div > input, li > input[type="button"] {
+            height: 40px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            padding: 0 15px;
+        }
+
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+
+        input[type="text"], input[type="date"] {
+            width: calc(100% - 22px);
+        }
+    </style>
+</head>
+<body>
+<section class="list">
+    <h2>todo</h2>
+    <ul>
+        <li>
+            <ul>
+                <li>할일</li>
+                <li>2023-12-31</li>
+                <li><input type="button" name="delete" value="삭제"></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<section class="add">
+    <h2>add todo</h2>
+    <div>
+        <label>
+            <input type="text" name="title">
+        </label>
+        <label>
+            <input type="date" name="dueDate">
+        </label>
+        <input type="button" value="등록">
+    </div>
+</section>
+</body>
+</html>

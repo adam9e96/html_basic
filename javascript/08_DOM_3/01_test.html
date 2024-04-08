@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // select 요소를 선택
+            const selectElement = document.getElementById('mySelect');
+
+            // 'change' 이벤트 리스너 추가
+            selectElement.addEventListener('change', function (event) {
+                // 선택된 옵션의 value를 콘솔에 출력
+                console.log(event.currentTarget.options[event.currentTarget.options.selectedIndex].textContent);
+                alert(`${event.currentTarget.options[event.currentTarget.options.selectedIndex].textContent}<-가 선택됨`);
+            });
+            const selectElement2 = document.getElementById('mySelect2');
+
+            // 'change' 이벤트 리스너 추가
+            selectElement2.addEventListener('change', function (event) {
+                // 선택된 옵션의 value를 콘솔에 출력
+                console.log(event.target.value);
+            });
+        });
+    </script>
+</head>
+<body>
+<label for="mySelect">
+    <select id="mySelect">
+        <option value="option1">옵션 1</option>
+        <option value="option2">옵션 2</option>
+        <option value="option3">옵션 3</option>
+    </select>
+    <select id="mySelect2">
+        <option value="option1">옵션 1</option>
+        <option value="option2">옵션 2</option>
+        <option value="option3">옵션 3</option>
+    </select>
+</label>
+</body>
+</html>
