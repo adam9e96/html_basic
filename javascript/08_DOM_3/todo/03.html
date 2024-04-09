@@ -5,7 +5,7 @@
     <title>Title</title>
     <script>
         /*
-         * to do
+         * 1. 목표
          * 글 등록 / 삭제 / 수정 기능
          *
          *
@@ -17,12 +17,30 @@
          * 2) 할일과 날짜가 입력이 안된 경우 글 등록이 안되도록 (경고문을 발생하도록)
          * 3) 날짜의 기본값은 오늘로
          * 4) 이전 날짜는 선택이 안되도록 하기
+         *
+         * 4. 글삭제 기능 구현
+         * 1) 삭제 버튼에 이벤트 추가. 콜백함수에 경고창이 나오도록 하고, 경고창에 해당 요소의 할 일이 나오도록
+         * -> 요소가 새로 생성될 떄 마다 바로 이벤트를 추가해야 함
+         *
+         * 5. 수정 기능 구현
+         *1) 수정 버튼 추가. -> 삭제 버튼의 이벤트와 충돌이 안되는지 확인.
+         * 2) 수정 영역 만들기
+         * 3) to do 영역에서 수정 버튼 클릭시에 해당 내용이 수정 영역의 폼에 들어가도록.
+         * -> 수정 버튼에 이벤트를 추가. 콜백 함수에 해당 내용이 수정 영역에
+         * 4)
+         *
+         *
+         *
+         * 4) 수정 영역의 수정 버튼 클릭시에 data-src 값이 idx 인 요소를 수정
+         * 해당 요소가 없는 경우에는 삭제된 게시물이라는 경고창 출력.
  */
         document.addEventListener('DOMContentLoaded', () => {
             const title = document.querySelector('.add input[name=title]');
             const dueDate = document.querySelector('.add input[name=dueDate]');
             const btnAdd = document.querySelector('.add input[type=button]');
             const list = document.querySelector('.list ul');
+            // 수정 버튼 추가
+            const btnEdit = document.querySelector('.edit input[name=edit]');
 
             const initForm = () => {
                 title.value = '';
@@ -48,12 +66,104 @@
                     <li>${title.value}</li>\n\
                     <li>${dueDate.value}</li>\n
                     <li><input type="button" name="delete" value="삭제"></li>\n
-                </ul>`;
+                    <li><input type="button" name="update" value="수정"></li>\n
+                    </ul>`;
+                // 삭제 버튼
+                addItem.querySelector('[name=delete]').addEventListener('click', (e) => {
+                    // console.log(e.currentTarget);
+                    // console.log(e.currentTarget.parentNode.parentNode.querySelector('li').textContent);
+                    alert(e.currentTarget.parentNode.parentNode.querySelector('li').textContent);
+
+                    // 1. removeChild() 사용
+                    // const node = e.currentTarget.parentNode.parentNode.parentNode; // li 삭제
+                    // console.log(`노드임 : ${node.textContent}`);
+                    // node.parentNode.removeChild(node);
+
+                    // 2. remove() : 전체 요소에서 인덱스를 구해서 삭제
+                    // 클릭한 부분의 인덱스 구함.
+                    // const list = document.querySelectorAll('.list ul');
+                    // const array = Array.from(list); // 배열로 가져옴
+                    // const indexNum = array.indexOf(e.currentTarget.parentNode.parentNode); // 인덱스 구함.
+                    // console.log(`인덱스넘 : ${indexNum}`);
+                    // 인덱스 기준으로 삭제
+                    // array[indexNum].parentNode.remove();
+                    const list = document.querySelectorAll('.list ul');
+                    const array = Array.from(list); // 배열로 가져옴
+                    const indexNum = array.indexOf(e.currentTarget.parentNode.parentNode); // 인덱스 구함.
+
+                    const deleteItemIdx = indexNum;
+                    console.log(`삭제할 항목의 IDX 값: ${deleteItemIdx}`);
+
+                    const editingItemIdx = document.querySelector('.edit input[name=idx]').value;
+                    console.log(`수정중인 항목의 IDX 값 : ${editingItemIdx}`); // OK
+
+                    if (deleteItemIdx < editingItemIdx) {
+                        document.querySelector('.edit [name=idx]').value = editingItemIdx - 1; // 인덱스 보정
+                    }
+
+                    /**
+                     *   인덱스 값 보정
+                     *   1. 삭제되는 항목의 인덱스를 구함
+                     *   2. 수정중인 항목의 인덱스를 구함 <-- 이건 우리가 이미 아는 값임 [v]
+                     *
+                     *   로직
+                     *   3. 삭제되는 항목의 인덱스 < 수정중인 항목의 인덱스 라면
+                     *   수정중인 항목의 인덱스값 => 인덱스값-- 로 보정
+                     *   그 외의 경우에는 X
+                     *   4. 삭제
+                     */
+
+                    // 3. 바로 삭제
+                    addItem.remove();
+                });
+
+                // 수정 버튼 클릭 시에 수정 영역의 폼에 값을 입력.
+                addItem.querySelector('[name=update]').addEventListener('click', (e) => {
+                    // 1. log 로 할일과 날짜를 출력
+                    // 할일
+                    const todoText = e.currentTarget.parentNode.parentNode.querySelector('li').textContent;
+                    // console.log(`todoText 값 : ${todoText}`);
+
+                    // 날짜
+                    const todoDate = e.currentTarget.parentNode.parentNode.querySelectorAll('li')[1].textContent;
+                    // console.log(`todoDate : ${todoDate}`);
+
+                    // 2. 수정 영역의 폼에 값을 입력
+                    document.querySelector('.edit [name=title]').value = todoText;
+                    document.querySelector('.edit [name=dueDate]').value = todoDate;
+                    /*
+                     * 문제점
+                     * 1. 수정 버튼으로 값을 받아 오는건 되는데 몇번째 글에 수정한 값을 돌려줘야 하는지 모름
+                     * -> 인덱스 값을 만들고 넘겨줘야함
+                     */
+                    // 3. 해당 요소가 몇 번째 인덱스인지 값을 입력.
+                    const list = document.querySelectorAll('.list ul');
+                    const array = Array.from(list); // 배열로 가져옴
+                    const indexNum = array.indexOf(e.currentTarget.parentNode.parentNode); // 인덱스 구함.
+                    console.log(`인덱스넘 : ${indexNum}`);
+                    document.querySelector('.edit [name=idx]').value = indexNum;
+                });
 
                 list.appendChild(addItem);
-
                 // 폼 초기화
                 initForm();
+            });
+            // edit to do - 수정 버튼 클릭시
+            btnEdit.addEventListener('click', (e) => {
+                const title = document.querySelector('.edit input[name=title]');
+                const dueDate = document.querySelector('.edit input[name=dueDate]');
+                const idx = document.querySelector('.edit input[name=idx]');
+
+                console.log(title);
+                console.log(dueDate);
+                console.log(idx);
+
+                const list = document.querySelectorAll('.list ul');
+                const array = Array.from(list); // 배열로 가져옴
+                console.log(array[idx.value]);
+                array[idx.value].querySelector('li:nth-child(1)').textContent = title.value;
+                array[idx.value].querySelector('li:nth-child(2)').textContent = dueDate.value;
+
             });
         });
     </script>
@@ -69,9 +179,12 @@
             width: 600px;
             background: #ffffff;
             margin: 30px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
             padding: 20px;
+
+            /* 추가 */
+            box-shadow: 5px 5px 5px #bad9a2,
+            -5px -5px 20px #fff4ff;
         }
 
         .list, .add {
@@ -84,22 +197,20 @@
             margin-bottom: 20px;
         }
 
-
         ul {
             list-style: none;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             padding: 10px;
-            margin: 10px 0;
-            background-color: #f9f9f9;
+            margin: 20px 10px 10px;
+            background-color: #bad9a2;
             border-radius: 10px;
             box-sizing: border-box;
             flex-direction: column;
         }
 
         li {
-            font-size: 16px;
+            font-size: 20px;
             color: #666;
             padding-right: 10px;
         }
@@ -107,7 +218,7 @@
         div > input, li > input[type="button"] {
             height: 40px;
             border-radius: 20px;
-            border: 1px solid #ccc;
+            border: none;
             margin-right: 10px;
             padding: 0 15px;
         }
@@ -116,14 +227,29 @@
             background-color: #4CAF50;
             color: white;
             border: none;
+            margin-top: 10px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s ease;
         }
 
+        input[name="delete"] {
+            background: indianred;
+        }
 
         input[type="text"], input[type="date"] {
             width: calc(100% - 22px);
+            height: 30px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            background-color: rgb(186, 217, 162);
+            border: none;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        section.add > div > input[type=button], section.edit > div > input[type=button] {
+
         }
     </style>
 </head>
@@ -136,20 +262,31 @@
                 <li>할일</li>
                 <li>2023-12-31</li>
                 <li><input type="button" name="delete" value="삭제"></li>
+                <li><input type="button" name="update" value="수정"></li>
             </ul>
         </li>
+
     </ul>
 </section>
 <section class="add">
     <h2>add todo</h2>
     <div>
         <label>
-            <input type="text" name="title">
+            <input type="text" name="title" placeholder="제목입력">
         </label>
         <label>
             <input type="date" name="dueDate">
         </label>
         <input type="button" value="등록">
+    </div>
+</section>
+<section class="edit">
+    <h2>edit todo</h2>
+    <div>
+        <input type="hidden" name="idx" placeholder="hidden value">
+        <input type="text" name="title" placeholder="수정할 제목 입력">
+        <input type="date" name="dueDate">
+        <input type="button" name="edit" value="수정">
     </div>
 </section>
 </body>
