@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        # 공공데이터 포털에서 '인천국제공항공사_여객편 주간 운항 현황' 검색
+        # https://www.data.go.kr/data/15095074/openapi.do
+        # 항공사가 대한항공인 경우만 항공사, 편명, 예정시간, 도착지공항 을 테이블로 출력
+
+        # 응답 메시지
+        # airline : 항공사 예)대한항공
+        # flightId : 편명 예) KE093
+        # scheduleDateTime : 예정시간 예) 202111051015
+        # airport : 도착지공항 예) 워싱턴
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // console.log(getUrl());
+            // getUrl();
+            // 버튼 클릭시 실제 동작하는 로직
+            const btns = document.querySelectorAll("[type=button]");
+
+            btns.forEach((item) => {
+                item.addEventListener('click', () => {
+                    // console.log(item.value);
+                    // console.log(getUrl());
+                    printAirline(getUrl(), item.value);
+                });
+            });
+
+            const printAirline = function (url, name) {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                    if (xhr.status === 200) {
+                        const tableBody = document.querySelector('tbody');
+
+                        console.log('성공이다.');
+                        const jsonObject = JSON.parse(xhr.response);
+                        // console.log(jsonObject); // OK
+                        // const airline = xhr.response.body.items;
+                        const items = jsonObject.response.body.items;
+                        while (tableBody.firstChild) {
+                            tableBody.removeChild(tableBody.firstChild);
+                        }
+                        // console.log(items); // OK
+                        for (let item of items) {
+                            if (item['airline'].indexOf(name) >= 0) {
+                                const trTag = document.createElement('tr');
+                                console.log(item);
+                                trTag.innerHTML = `
+                            <td>${item['airline']}</td>
+                            <td>${item['flightId']}</td>
+                            <td>${item['scheduleDateTime']}</td>
+                            <td>${item['airport']}</td>
+                                `;
+                                tableBody.append(trTag);
+                                // airline : 항공사
+                                // flightId  : 편명
+                                // scheduleDateTime : 예정시간
+                                // airport : 도착지 공항
+                                // }
+                            }
+                        }
+                    } else {
+                        console.error('Error', xhr.status, xhr.statusText);
+                    }
+                }
+                xhr.send(); // url 에 요청을 보냄. <-- 실제 데이터를 요청하는 부분.
+                // printAirline(getUrl());
+            };
+        });
+
+        const getUrl = () => {
+            // url 인코딩된 키 사용.
+            const serviceKey = '';
+            const url = 'http://apis.data.go.kr/B551177/StatusOfPassengerFlightsDSOdp/getPassengerDeparturesDSOdp';
+            return `${url}?serviceKey=${serviceKey}&airport_code=NRT&type=json`;
+            // console.log(url+parameter);
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            border: 2px solid black;
+            border-collapse: collapse; /* 테두리 통합 */
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px dotted black;
+            text-align: center;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+        }
+
+        div input {
+            text-align: center;
+            /*margin: 0 auto;*/
+            width: 100px;
+            margin-left: 10px;
+            height: 40px;
+            background-color: #3a4bb9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            /*padding: 5px 10px;*/
+        }
+
+        div input:hover {
+            background-color: white;
+            color: #3a4bb9;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="button" value="나리타"></input>
+    <input type="button" value="삿포로"></input>
+    <input type="button" value="오사카/간사이"></input>
+    <input type="button" value="후쿠오카"></input>
+    <input type="button" value="홍콩"></input>
+</div>
+<table>
+    <tr>
+        <!--        항공사, 편명, 예정시간, 도착지공항-->
+        <th>항공사</th>
+        <th>편명</th>
+        <th>예정시간</th>
+        <th>도착지공항</th>
+    </tr>
+</table>
+
+</body>
+</html>

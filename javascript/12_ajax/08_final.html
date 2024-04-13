@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         *  # 공공데이터 포털에서 '인천국제공항공사_버스정보' 검색
+            # https://www.data.go.kr/data/15095045/openapi.do
+            # 인천국제공항 여객터미널 T1,T2 버스 정보(공항행 첫차/막차,종점행 첫차/막차,성인요금,
+            # 버스등급,버스번호,지역,운수사,평일시간,주말시간,노선정보,승차위치)를 제공
+            -> 대구로 오는 버스노선만 테이블 형식으로 출력
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const tr = document.querySelector('table > tbody > tr:nth-child(2)');
+            // console.log(tr);
+            const td = document.querySelectorAll('tr td');
+            console.log(td);
+            // ajax 를 이용해서 데이터를 가져오기
+            // XMLHttpRequest 객체 생성
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', getUrl());
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+                // 완료가 되면 실행될 코드
+                if (xhr.status === 200) {
+                    const tableBody = document.querySelector('tbody');
+
+                    // console.log("성공");
+                    const jsonData = JSON.parse(xhr.response);
+                    // console.log(jsonData); // OK
+                    const items = jsonData.response.body.items;
+                    // console.log(busInfos);
+                    for (let item of items) {
+                        // if (busInfo["routeinfo"].includes('대구')) {  // '대구' 포함 여부 확인
+                        if (item["routeinfo"].indexOf('대구') >= 0) {  // '대구' 포함 여부 확인
+                            const trTag = document.createElement('tr');
+                            trTag.innerHTML = `
+                            <td>${item['busnumber']}</td>
+                            <td>${item['busclass']}</td>
+                            <td>${item['adultfare']}</td>
+                            <td>${sortStr(item['t1wdayt'], item['t2wdayt'])}</td>
+                            <td>${sortStr(item['t1wt'], item['t2wt'])}</td>
+                            `;
+                            tableBody.append(trTag);
+                            // console.log(busInfo);  // '대구'가 포함된 노선 정보 출력
+                            // console.log(busInfo['busnumber']); OK
+                            // busNumber.innerHTML += busInfo['busnumber']; //  # 버스번호
+                            // busGrade += busInfo['busclass']; //   # 버스등급
+                            // console.log(busInfo['busclass']); // 우등 OK
+                            // busAdultPrice += busInfo['adultfare']; //  # adultfare
+                            // console.log(busInfo['adultfare']); OK
+                            // # 기본 데이터는 문자열. 2개의 문자열을 결합하고, 공백제거 후, 리스트로 변환
+
+                            // console.log(sortStr(busInfo['t1wdayt'], busInfo['t2wdayt']));
+                            // weekTime += sortStr(busInfo['t1wdayt'], busInfo['t2wdayt']); // 평일시간표
+                            // console.log(sortStr(busInfo['t1wt'], busInfo['t2wt']));
+                            // weekendTime += sortStr(busInfo['t1wt'], busInfo['t2wt']); // 주말 시간표
+                        }
+                        // console.log(busNumber);
+                        // console.log(busGrade);
+                        // console.log(busAdultPrice);
+                        // console.log(weekTime);
+                        // console.log(weekendTime);
+                    }
+                    // busNumber.innerHTML =
+
+
+                } else {
+                    console.error('Error', xhr.status, xhr.statusText);
+                }
+            }
+            xhr.send(); // url 에 요청을 보냄. <-- 실제 데이터를 요청하는 부분.
+
+        });
+        const sortStr = function (string1, string2) {
+            // 기본 데이터는 문자열. 2개의 문자열을 결합하고, ',' 기준으로 배열로 변환
+            let tempList = (string1 + ', ' + string2).split(",");
+            tempList = [...new Set(tempList)]; // 중복 제거
+            tempList = tempList.map((item) => item.trim()); // 공백제거
+            // console.log("tempList");
+            // console.log(tempList);
+            tempList.sort(); // 정렬
+            return tempList.join(", "); // 배열을 문자열로 변환
+
+        }
+        const getUrl = () => {
+            const serviceKeyEncode = '';
+            const area = 6;  // 경상
+            const type = 'json';
+            const numOfRows = 50;
+            let parameter = `?serviceKey=${serviceKeyEncode}&area=${area}&numOfRows=${numOfRows}&pageNo=1&type=${type}`;
+            let url = 'http://apis.data.go.kr/B551177/BusInformation/getBusInfo' + parameter
+            // console.log(url);
+            return url;
+        };
+    </script>
+    <style>
+        table {
+            border: 2px solid black;
+            border-collapse: collapse; /* 테두리 통합 */
+            width: 1200px;
+            margin: 0 auto;
+        }
+        td {
+            padding: 15px;
+            border: 1px dotted black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>버스번호</th>
+        <th>버스등급</th>
+        <th>성인요금</th>
+        <th>평일시간표</th>
+        <th>주말시간표</th>
+    </tr>
+    <tr>
+        <!--        <td>동대구(직통),대구북부(상주경유),대구북부(김천부곡경유)</td>-->
+        <!--        <td>우등, 우등, 우등</td>-->
+        <!--        <td>41500</td>-->
+        <!--        <td>"0630, 0650, 0700, 0720, 0740, 0800, 0820, 0830, 0850, 0900, 0920, 0930, 0950, 1020, 1040, 1050, 1110, 1140, 1200, 1230, 1250, 1300, 1320, 1340, 1400, 1420, 1440, 1500, 1520, 1540, 1600, 1630, 1650, 1700, 1720, 1730, 1750, 1800, 1820, 1830, 1850, 1900, 1920, 1940, 2000, 2030, 2050, 2100, 2120, 2140, 2200, 2220, 2240, 2300, 2320","0610, 0630, 0810, 0830, 1130, 1150, 1740, 1800","0850, 0910, 1440, 1500, 1650, 1710, 2050, 2110"</td>-->
+        <!--        <td>"0630, 0650, 0700, 0720, 0740, 0800, 0820, 0830, 0850, 0900, 0920, 0930, 0950, 1020, 1040, 1050, 1110, 1140, 1200, 1230, 1250, 1300, 1320, 1340, 1400, 1420, 1440, 1500, 1520, 1540, 1600, 1630, 1650, 1700, 1720, 1730, 1750, 1800, 1820, 1830, 1850, 1900, 1920, 1940, 2000, 2030, 2050, 2100, 2120, 2140, 2200, 2220, 2240, 2300, 2320","0850, 0910, 1440, 1500, 1650, 1710, 2050, 2110","0610, 0630, 0810, 0830, 1130, 1150, 1740, 1800"</td>-->
+    </tr>
+</table>
+
+
+</body>
+</html>

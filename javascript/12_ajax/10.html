@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        공공데이터 포털에서 '인천국제공항공사_버스정보' 검색
+        https://www.data.go.kr/data/15095045/openapi.do
+        인천국제공항 여객터미널 T1,T2 버스 정보(공항행 첫차/막차,종점행 첫차/막차,성인요금,
+        버스등급,버스번호,지역,운수사,평일시간,주말시간,노선정보,승차위치)를 제공
+
+        -> 대구로 오는 버스노선만 테이블 형식으로 출력
+        버스번호, 버스등급, 성인요금, 평일시간표, 주말시간표 순서
+        시간표는 이른 시간이 먼저 나오도록
+
+        -> 기능 추가
+        버튼을 만들고 버튼을 클릭하면 버튼에 있는 도시의 결과만 나오도록
+         */
+        document.addEventListener('DOMContentLoaded', function () {
+            const btns = document.querySelectorAll('input[type=button]');
+            btns.forEach((item) => {
+                item.addEventListener('click', function () {
+                    console.log(item.value);
+                    console.log(getUrl());
+                    printBusTable(getUrl(), item.value);
+                });
+            });
+
+        });
+        const sortStr = function (string1, string2) {
+            // 기본 데이터는 문자열. 2개의 문자열을 결합하고, ',' 기준으로 배열로 변환
+            let tempList = (string1 + ', ' + string2).split(",");
+            tempList = [...new Set(tempList)];  // 중복 제거
+            tempList = tempList.map((item) => item.trim()) // 공백 제거
+            // console.log("tempList")
+            // console.log(tempList)
+            tempList.sort();  // 정렬
+
+            // 현재 시간 구해서 이전 시간이면 연하게 출력.
+            const today = new Date();
+            const todayTime = `${today.getHours()}${today.getMinutes()}`;
+            // console.log(todayTime)
+            tempList = tempList.map((item) => {
+                console.log(Number(item))
+                return Number(item) < Number(todayTime) ? `<span style="color: #cccccc">${item}</span>` : item;
+            });
+
+
+            return tempList.join(", ");  // 배열을 문자열로 변환
+        }
+        const getUrl = () => {
+            // url 인코딩된 키 사용.
+            const serviceKey = '';
+            const url = 'http://apis.data.go.kr/B551177/BusInformation/getBusInfo';
+            return `${url}?serviceKey=${serviceKey}&numOfRows=50&pageNo=1&area=6&type=json`;
+        }
+
+        const printBusTable = function (url, name) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === XMLHttpRequest.DONE) return;
+
+                if (xhr.status === 200) {
+                    const jsonObject = JSON.parse(xhr.response);
+                    const items = jsonObject.response.body.items;
+                    const tableBody = document.querySelector('tbody');
+                    // console.log(items)
+                    while (tableBody.firstChild) {
+                        tableBody.removeChild(tableBody.firstChild);
+                    }
+
+                    for (item of items) {
+                        // console.log(item);
+                        if (item['routeinfo'].indexOf(name) >= 0) {
+                            const trTag = document.createElement('tr');
+                            trTag.innerHTML = `
+							<td>${item['busnumber']}</td>
+							<td>${item['busclass']}</td>
+							<td>${item['adultfare']}</td>
+							<td>${sortStr(item['t1wdayt'], item['t2wdayt'])}</td>
+							<td>${sortStr(item['t1wt'], item['t2wt'])}</td>
+							`;
+                            tableBody.append(trTag);
+                        }
+                    }
+                } else {
+                    console.error('Error', xhr.status, xhr.statusText);
+                }
+            }
+            xhr.send();
+        }
+    </script>
+    <style>
+        table {
+            border: 2px solid black; /* 테두리 스타일 */
+            border-collapse: collapse; /* 테두리 통합 */
+            width: 1000px; /* 넓이 */
+        }
+
+        th, td {
+            border: 1px dotted black; /* 테두리 스타일 */
+            padding: 10px; /* 안쪽 여백 */
+            height: 100px; /* 셀의 높이 */
+            text-align: center; /* 글자 정렬 */
+            width: 200px; /* 넓이 */
+        }
+
+        th {
+            border-style: solid;
+        }
+
+        div {
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            width: 1000px;
+        }
+
+        div input {
+            width: 70px;
+            height: 40px;
+            background-color: #3a4bb9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        div input:hover {
+            background-color: white;
+            color: #3a4bb9;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>버스번호</th>
+        <th>버스등급</th>
+        <th>성인요금</th>
+        <th>평일시간표</th>
+        <th>주말시간표</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<div>
+    <input type="button" value="대구">
+    <input type="button" value="구미">
+    <input type="button" value="경산">
+    <input type="button" value="포항">
+</div>
+</body>
+</html>
