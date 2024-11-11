@@ -5,30 +5,33 @@
     <title>Title</title>
     <script>
         /*
-        let 을 이용한 변수 선언
+        let을 이용한 변수 선언
 
-        let 으로는 재선언 할 수 없음.
-        단 let 은 변수를 덮어 쓸 수는 있음.
+        let으로는 재선언 할 수 없습니다.
+        하지만 let은 변수를 덮어 쓸 수 있습니다.
          */
-        // let 으로 변수 덮어 쓰기
+
+        // let으로 변수 덮어 쓰기
         let val2 = 'let 변수';
-        console.log(val2);
+        console.log(val2); // 'let 변수' 출력
 
         val2 = 'let 변수 덮어 쓰기';
-        console.log(val2);
+        console.log(val2); // 'let 변수 덮어 쓰기' 출력
 
-        // 재선언 실행
+        // let으로 변수 선언
         let val3 = 'let 변수';
-        console.log(val3);
+        console.log(val3); // 'let 변수' 출력
 
-        // let 은 재선언 불가능
-        // let val3 = 'let 변수 재선언' // 에러
+        // let은 재선언 불가능
+        // let val3 = 'let 변수 재선언'; // 에러 발생
         // Uncaught SyntaxError: Identifier 'val3' has already been declared
         // '이미 선언되어 재선언 할 수 없다'는 메시지
 
-        // 이렇게 let 은 var 를 이용했을 때 문제가 되었던 재선언을 개선한 변수 정의 방법.
-        // 덮어 쓰기를 허가할 변수는 let를 이용해야 함.
-        // console.log(val3);
+        /*
+        이렇게 let은 var를 이용했을 때 문제가 되었던 재선언을 개선한 변수 정의 방법입니다.
+        변수를 덮어 쓸 수는 있지만, 재선언을 방지하여 코드의 안정성을 높입니다.
+        덮어쓰기를 허용하는 변수를 선언할 때는 let을 이용해야 합니다.
+         */
     </script>
 </head>
 <body>

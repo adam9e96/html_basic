@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * rest parameter 실무 사용
+         */
+        'use strict';
+
+        /*
+         * 1. 여러 값을 함수에 전달할 때 배열을 사용
+         * 함수에서 여러 값을 처리할 때, 배열을 파라미터로 받아 처리하는 경우가 흔합니다.
+         */
+        function calculateTotal(prices) {
+            // 합계 계산
+            let total = 0;
+            prices.forEach(price => {
+                total += price;
+            });
+            return total;
+        }
+
+        const productPrices = [29.99, 19.99, 4.99];
+        const total = calculateTotal(productPrices);
+        console.log(`Total: $${total}`); // Total: $54.97
+
+        // ===============================================================
+
+        /*
+         * 2. API 데이터 전달
+         * 배열을 파라미터로 전다랗여 API 호출 시 데이터를 전송할 수 있다.
+         */
+        function sendUserIds(userIds) {
+            // 사용자 ID 배열을 서버로 전송
+            fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ids: userIds })
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
+
+        const userIds = [1, 2, 3, 4, 5];
+        // sendUserIds(userIds);
+
+        /*
+         * 3. 배열 데이터를 사용해 UI 요소 생성
+         * 리스트 데이터르 ㄹ받아서 동적으로 HTML 요소를 생성하는 경우도 많이 있다.
+         */
+        function createList(items) {
+            // 배열을 사용해 목록 생성
+            const ul = document.createElement('ul');
+
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+
+            document.body.appendChild(ul);
+        }
+
+        const fruits = ['Apple', 'Banana', 'Cherry'];
+        // createList(fruits);
+
+
+
+
+    </script>
+</head>
+<body>
+
+<ul>
+    <li>df</li>
+</ul>
+<button>
+    df
+</button>
+
+<script>
+    function addClickHandlers(buttons) {
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert(`${button.textContent} clicked`);
+                console.log('clicked');
+            });
+        });
+    }
+
+    const buttons = document.querySelectorAll('button');
+    addClickHandlers(buttons);
+</script>
+</body>
+</html>

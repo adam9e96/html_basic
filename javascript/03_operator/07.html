@@ -2,19 +2,29 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>증감 연산자 예제</title>
     <script>
-        // ++, --
+        // 증감 연산자 ++, --
+
+        // 변수 초기값 설정
         let increase = 0;
         let add = 0;
+
+        // 전위 증가 연산자: 값을 증가시키고 나서 사용
         ++increase;
-        console.log(increase); // 1
-        increase++; // 1 2
-        console.log(increase); // 2
-        add = ++increase; // 3
-        console.log(add + ',' + increase); // 3 3
-        add = increase++; // 2  (3  4)
-        console.log(add + ',' + increase); // 3 4
+        console.log(`++increase: ${increase}`); // 1
+
+        // 후위 증가 연산자: 값을 사용하고 나서 증가시킴
+        increase++; // 현재 값: 1, 증가 후 값: 2
+        console.log(`increase++: ${increase}`); // 2
+
+        // 전위 증가 연산자: 값을 증가시키고 나서 할당
+        add = ++increase; // 현재 값: 2, 증가 후 값: 3
+        console.log(`add = ++increase: ${add}, increase: ${increase}`); // 3, 3
+
+        // 후위 증가 연산자: 값을 할당하고 나서 증가시킴
+        add = increase++; // 현재 값: 3, 증가 후 값: 4
+        console.log(`add = increase++: ${add}, increase: ${increase}`); // 3, 4
     </script>
 </head>
 <body>

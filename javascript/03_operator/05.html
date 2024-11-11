@@ -5,35 +5,49 @@
     <title>증감 연산자</title>
     <script>
         /*
-         * 증감 연산자 : 복합 대입 연산자를 약간 간략하게 사용한 형태
+         * 증감 연산자 : 복합 대입 연산자를 간략하게 사용한 형태
          *
-         * a++ : 기존의 변수 값에 1을 더함. 후위.
-         * ++a : 기존의 변수 값에 1을 더함. 전위.
-         * a-- : 기존의 변수 값에 1을 뺌. 후위.
-         * --a : 기존의 변수 값에 1을 뺌. 전위.
-         *
-         * C
-         * C++
-         * JAVA
+         * a++ : 기존의 변수 값에 1을 더함. 후위 (Post-increment)
+         * ++a : 기존의 변수 값에 1을 더함. 전위 (Pre-increment)
+         * a-- : 기존의 변수 값에 1을 뺌. 후위 (Post-decrement)
+         * --a : 기존의 변수 값에 1을 뺌. 전위 (Pre-decrement)
          */
+
         let num1 = 10;
-        num1++; // 11 -> num+=1 -> num1 = num1 + 1;
-        document.write(num1); // 11
-        document.write('<br><br>');
+        num1++; // 11 -> num1 = num1 + 1;
+        document.write(`num1의 값: ${num1}<br><br>`); // 11
 
-        // 후위 : 해당 문장을 실행한 후 값을 더함.
+        // 후위 증감 연산자: 해당 문장을 실행한 후 값을 더함
         let num2 = 10;
-        document.write(num2++); // 10 document.write(num2); num2++; 가 한문장에 합쳐진거임
-        document.write('<br>'); // 11
-        document.write(num2++); // 11
-        document.write('<br>'); // 12
-        document.write(num2++); // 12
-        document.write('<br>'); // 13
-        document.write(num2); // 13
-        document.write('<br><br>'); // 13
+        document.write(`num2 (후위): ${num2++}<br>`); // 10
+        document.write(`num2: ${num2}<br>`); // 11
+        document.write(`num2 (후위): ${num2++}<br>`); // 11
+        document.write(`num2: ${num2}<br>`); // 12
+        document.write(`num2 (후위): ${num2++}<br>`); // 12
+        document.write(`num2: ${num2}<br><br>`); // 13
 
-        // 아래와 같이 쓸 수 있음
+        // 전위 증감 연산자 예시
+        let num3 = 10;
+        document.write(`num3 (전위): ${++num3}<br>`); // 11
+        document.write(`num3: ${num3}<br>`); // 11
+        document.write(`num3 (전위): ${++num3}<br>`); // 12
+        document.write(`num3: ${num3}<br>`); // 12
+        document.write(`num3 (전위): ${++num3}<br>`); // 13
+        document.write(`num3: ${num3}<br>`); // 13
 
+        // 후위 감소 연산자 예시
+        let num4 = 10;
+        document.write(`num4 (후위): ${num4--}<br>`); // 10
+        document.write(`num4: ${num4}<br>`); // 9
+        document.write(`num4 (후위): ${num4--}<br>`); // 9
+        document.write(`num4: ${num4}<br>`); // 8
+
+        // 전위 감소 연산자 예시
+        let num5 = 10;
+        document.write(`num5 (전위): ${--num5}<br>`); // 9
+        document.write(`num5: ${num5}<br>`); // 9
+        document.write(`num5 (전위): ${--num5}<br>`); // 8
+        document.write(`num5: ${num5}<br>`); // 8
     </script>
 </head>
 <body>

@@ -8,11 +8,13 @@
             margin: 0;
             padding: 0;
         }
+
         /*
-        absolute 일반적인 사용 방법
-        1. 부모 요소를 relative로 지정한다.
-        2. 부모 요소의 높이를 지정해서 자식 요소를 감싸주게 한다.
+        absolute 를 이용한 가운데 정렬
+        기준점이 박스의 왼쪽
+
          */
+
         .movie { /* 부모 박스 요소 */
             width: 700px;
             height: 500px;
@@ -23,7 +25,7 @@
         }
 
         /* 자식 박스 요소  */
-        /* 버튼 */
+        /* 공통 - 버튼 */
         .movie div {
             width: 120px;
             height: 120px;
@@ -35,18 +37,25 @@
             font-size: 30px;
             position: absolute;
         }
+
+        /* sol1. */
         .prev {
-            top: 50%;   /* top으로의 위치 */
+            top: 50%; /* top으로의 위치 */
             left: 10px; /* left로의 위치 */
+            margin-top: -60px; /* 중앙 정렬을 위한 보정 */
+            /* 요소의 높이 절반인 -60px의 마진을 주어 중앙 정렬을 보정 */
         }
+
+        .next {
+            top: calc(50% - 60px); /* 중앙 정렬을 위한 보정 */
+            right: 10px;
+        }
+
         .play {
-            top: 50%;
+            top: calc(50% - 60px);
             right: 50%;
         }
-        .next {
-            top: 50%;
-            left: 60%;
-        }
+
         /* 박스의 윗면 기준으로 50%라 보정을 해줘야함 원반지름을 빼야함   */
     </style>
 </head>

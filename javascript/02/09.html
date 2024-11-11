@@ -6,25 +6,26 @@
     <script>
         /* undefined 자료형 */
 
-        'use strict'; // 엄격 모드
+        'use strict'; // 엄격 모드 활성화
 
         // 상수와 변수로 선언하지 않은 식별자의 자료형은 undefined
-        console.log(typeof(a)); // undefined
-        console.log(typeof a); // undefined
+        console.log(typeof (a)); // 'undefined' 출력
+        console.log(typeof a); // 'undefined' 출력
 
         // 변수를 선언하면서 값을 지정하지 않은 경우 식별자의 자료형은 undefined
         // 상수를 선언할 때 반드시 값을 지정해야 하므로 값이 없는 상수는 존재하지 않음.
         let b;
-        console.log(typeof(b)); //undefined
+        console.log(typeof (b)); // 'undefined' 출력
 
         // 예전에 하던 방식
-        // c = 100; // <-- 엄격 모드를 키면 오류 뜸
-        // console.log(typeof(c)); // number
+        // 엄격 모드를 활성화하면 선언되지 않은 변수에 값을 할당할 때 오류 발생
+        // c = 100; // <-- 엄격 모드를 활성화하면 오류 발생
+        // console.log(typeof(c)); // 'number' 출력 (오류 발생 시 주석 처리 필요)
         // 변수 선언을 한 적이 없는데 초기화가 됨
 
-        const d="";
-        console.log(d);
-
+        // 상수 선언 (빈 문자열로 초기화)
+        const d = "";
+        console.log(d); // 빈 문자열 출력
     </script>
 </head>
 <body>

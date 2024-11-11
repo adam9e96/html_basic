@@ -2,26 +2,38 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>복합 대입 연산자 예제</title>
     <script>
         /*
-         * 복합 대입 연산자 : 대입 연산자(=) 와 다른 연산자를 함께 사용하는 연산자.
+         * 복합 대입 연산자: 대입 연산자(=)와 다른 연산자를 함께 사용하는 연산자.
+         * 예를 들어, a += b는 a = a + b와 동일합니다.
          *
-         * += a += => a = a + 1
-         *
+         * += 연산자: 변수에 값을 더하고 그 결과를 다시 변수에 저장합니다.
+         * 예시: a += 1 => a = a + 1
          */
-        let value = 10;
-        value += 10; // value = value + 10;
-        document.write(value); // 20
 
-        // 복합 대입 연산자를 사용해서 문자열을 조합.
+        // 초기 변수 선언 및 값 설정
+        let value = 10;
+
+        // 복합 대입 연산자를 사용하여 변수의 값을 증가
+        value += 10; // value = value + 10;
+
+        // 계산 결과를 웹 페이지에 출력
+        document.write(`value의 값: ${value}<br>`); // 20
+
+        // 복합 대입 연산자를 사용해서 문자열을 조합
         let list = '';
 
+        // HTML 리스트 요소를 문자열에 추가
         list += '<ul>';
         list += '    <li>Hello</li>';
         list += '    <li>javaScript..!</li>';
         list += '</ul>';
+
+        // 조합된 문자열을 콘솔에 출력
         console.log(list);
+
+        // 조합된 문자열을 웹 페이지에 출력
         document.write(list);
     </script>
 </head>

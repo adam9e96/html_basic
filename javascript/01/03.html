@@ -5,13 +5,21 @@
     <title>Title</title>
     <script>
         /*
-        에러 확인하기
-        개발자 도구에서 확인 - 빨간색 메시지로 나옴.
-
-        ReferenceError : 단어 오탈자
-        SyntaxError : 기호에서 오탈자
+         * 자바 스크립트 에러 확인하기
+         * - 개발자도구에서 확인 - 빨간색 메시지로 나옴
+         *         1. ReferenceError: 단어 오탈자
+         *            - 정의되지 않은 변수를 참조할 때 발생합니다.
+         *            - 예시: 'aler' is not defined
+         *            - 해결: 'alert'와 같이 올바르게 철자된 변수나 함수를 사용해야 합니다.
+         *
+         *         2. SyntaxError: 문법 오탈자
+         *            - 구문 오류가 있을 때 발생합니다.
+         *            - 예시: 예상치 못한 기호가 있을 때
+         *            - 해결: 코드의 구문을 올바르게 작성해야 합니다.
          */
-        aler('안녕하세요'); // Uncaught ReferenceError : aler is not defined at
+
+        // aler('안녕하세요'); // Uncaught ReferenceError : aler is not defined
+        alert('안녕하세요');  // 올바른 코드
     </script>
 </head>
 <body>

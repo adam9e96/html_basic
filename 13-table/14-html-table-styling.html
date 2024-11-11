@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Margin and Padding Example</title>
+    <style>
+        table {
+            border: 2px solid red; /* 표의 테두리를 빨간색으로 설정 */
+            border-collapse: collapse; /* 셀의 테두리를 결합 */
+            margin: 20px; /* 표 주위의 마진 */
+            width: 400px; /* 표의 너비 */
+        }
+
+        td, th {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #00bbdd; /* 셀의 테두리를 검은색으로 설정 */
+            padding: 10px; /* 셀 안의 패딩 */
+            text-align: left; /* 텍스트 왼쪽 정렬 */
+        }
+
+        /* 셀 사이의 간격을 설정 */
+        table.spacing {
+            border-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>Table without Border Spacing</h2>
+<!-- 표의 시작 -->
+<table>
+    <caption>표의 제목1</caption>
+    <!-- 첫 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (제목 셀) -->
+        <th>제목1</th>
+        <!-- 두 번째 열 (제목 셀) -->
+        <th>제목2</th>
+    </tr>
+    <!-- 두 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (내용 셀) -->
+        <td>내용1</td>
+        <!-- 두 번째 열 (내용 셀) -->
+        <td>내용2</td>
+    </tr>
+    <!-- 세 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (내용 셀) -->
+        <td>내용3</td>
+        <!-- 두 번째 열 (내용 셀) -->
+        <td>내용4</td>
+    </tr>
+</table>
+
+<h2>Table with Border Spacing</h2>
+<!-- 셀 사이의 간격을 설정한 표의 시작 -->
+<table class="spacing">
+    <caption>표의 제목2</caption>
+    <!-- 첫 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (제목 셀) -->
+        <th>제목1</th>
+        <!-- 두 번째 열 (제목 셀) -->
+        <th>제목2</th>
+    </tr>
+    <!-- 두 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (내용 셀) -->
+        <td>내용1</td>
+        <!-- 두 번째 열 (내용 셀) -->
+        <td>내용2</td>
+    </tr>
+    <!-- 세 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (내용 셀) -->
+        <td>내용3</td>
+        <!-- 두 번째 열 (내용 셀) -->
+        <td>내용4</td>
+    </tr>
+</table>
+</body>
+</html>

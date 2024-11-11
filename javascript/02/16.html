@@ -5,25 +5,24 @@
     <title>Title</title>
     <script>
         /*
-         * 숫자 자료형으로 변환하기.
-         * 다른 자료형을 숫자 자료형으로 변환할 때는 Number() 함수를 사용.
+         * 숫자 자료형으로 변환하기
+         * 다른 자료형을 숫자 자료형으로 변환할 때는 Number() 함수를 사용합니다.
          */
 
-        // prompt 로 입력을 받으면 기본형이 문자열.
-        const rawInput = prompt('inch 단위의 숫자를 입력해주세요.'); // 숫자를 입력.
-        console.log(typeof rawInput); // string
+        // prompt로 입력을 받으면 기본형이 문자열입니다.
+        const rawInput = prompt('inch 단위의 숫자를 입력해주세요.'); // 숫자를 입력받음
+        console.log(typeof rawInput); // 'string' 출력
 
-        // 입력받은 데이터를 숫자형으로 변경하고 cm 단위로 변경.
+        // 입력받은 데이터를 숫자형으로 변경하고 cm 단위로 변환
         const inch = Number(rawInput);
-        console.log(typeof inch); // number
+        console.log(typeof inch); // 'number' 출력
         const cm = inch * 2.54;
 
         // 출력
-        alert(inch + 'inch는 ' + cm + 'cm 입니다.')
+        alert(inch + ' inch는 ' + cm + ' cm 입니다.');
+        console.log(`${inch} inch는 ${cm} cm 입니다.`);
 
-        console.log(typeof inch); // number
-
-        alert(`${inch}inch는 ${cm}cm 입니다.`)
+        alert(`${inch} inch는 ${cm} cm 입니다.`);
     </script>
 </head>
 <body>

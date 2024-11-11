@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 페이지 제목 -->
+    <title>글쓰기 예제</title>
+    <!-- Bootstrap CSS 로드 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+<!-- 페이지 전체를 감싸는 컨테이너로, 위쪽 마진을 추가함 -->
+
+<!-- 글쓰기 버튼 -->
+<button id="writeBtn" class="btn btn-primary">글쓰기</button>
+<!-- 글쓰기 버튼: 클릭 시 모달 창이 열림 -->
+
+<!-- 글쓰기 에디터 모달 -->
+<div class="modal fade" id="writeModal" tabindex="-1" aria-labelledby="writeModalLabel" aria-hidden="true">
+    <!-- 모달 대화상자 -->
+    <div class="modal-dialog">
+        <!-- 모달 콘텐츠 -->
+        <div class="modal-content">
+            <!-- 모달 헤더 영역 -->
+            <div class="modal-header">
+                <!-- 모달 제목 -->
+                <h5 class="modal-title" id="writeModalLabel">글 작성</h5>
+                <!-- 모달 닫기 버튼 -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+            </div>
+            <!-- 모달 본문 영역 -->
+            <div class="modal-body">
+                <!-- 글 입력을 위한 텍스트 영역 -->
+                <textarea id="postContent" class="form-control" rows="10" placeholder="글 내용"></textarea>
+            </div>
+            <!-- 모달 푸터 영역 -->
+            <div class="modal-footer">
+                <!-- 완료하기 버튼: 글을 저장하고 모달을 닫음 -->
+                <button type="button" id="saveBtn" class="btn btn-success">완료하기</button>
+                <!-- 취소 버튼: 모달을 닫음 -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 저장된 글 내용을 표시하는 영역 -->
+<div id="savedPosts" class="mt-4">
+    <!-- 섹션 제목 -->
+    <h3>저장된 글</h3>
+    <!-- 글 목록 리스트 -->
+    <ul id="postList" class="list-group">
+        <!-- 저장된 글들이 여기에 추가됩니다 -->
+    </ul>
+</div>
+
+<!-- Bootstrap JS 및 필요한 라이브러리 로드 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 사용자 정의 스크립트 -->
+<script>
+    // 글쓰기 버튼 클릭 시 모달 열기
+    document.getElementById('writeBtn').addEventListener('click', function () {
+        // 모달 객체 생성
+        let writeModal = new bootstrap.Modal(document.getElementById('writeModal'));
+        // 모달 표시
+        writeModal.show();
+    });
+
+    // 완료하기 버튼 클릭 시 글 저장
+    document.getElementById('saveBtn').addEventListener('click', function () {
+        // 텍스트 영역에서 글 내용 가져오기
+        let content = document.getElementById('postContent').value;
+        // 글 내용이 비어있는지 확인
+        if (content.trim() !== "") {
+            // 글 목록 요소 가져오기
+            let postList = document.getElementById('postList');
+            // 새로운 리스트 아이템 생성
+            let newPost = document.createElement('li');
+            // 리스트 아이템에 클래스 추가
+            newPost.className = 'list-group-item';
+            // 리스트 아이템에 글 내용 추가
+            newPost.textContent = content;
+            // 글 목록에 새로운 글 추가
+            postList.appendChild(newPost);
+            // 텍스트 영역 초기화
+            document.getElementById('postContent').value = '';
+            // 모달 닫기
+            let writeModalEl = document.getElementById('writeModal');
+            let writeModal = bootstrap.Modal.getInstance(writeModalEl);
+            writeModal.hide();
+        } else {
+            // 글 내용이 비어있을 경우 알림 표시
+            alert('내용을 입력해주세요.');
+        }
+    });
+</script>
+
+</body>
+</html>

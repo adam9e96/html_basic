@@ -5,15 +5,39 @@
     <title>Title</title>
 </head>
 <body>
-    <!-- 글자색 바꾸기 -->
-    <h1 id="heading">자바스크립트</h1>
-    <p id="text">위 텍스트를 클릭해 보세요</p>
+<!-- 글자색 바꾸기 -->
+<h1 id="heading">자바스크립트</h1>
+<p id="text">위 텍스트를 클릭해 보세요</p>
 
-    <script>
-        let heading = document.querySelector('#heading');
-        heading.onclick = function() {
-            heading.style.color = 'red';
-        }
-    </script>
+<script>
+    let heading = document.querySelector('#heading');
+    heading.onclick = function () {
+        heading.style.color = 'red';
+    }
+</script>
+
+<script>
+    /*
+     * 응용 예시: 클릭할 때마다 글자색을 바꾸기
+     * 색상을 저장한 배열을 정의하고, 클릭할 때마다 순서대로 색상을 변경
+     */
+    let colors = ['red', 'green', 'blue', 'purple', 'orange']; // 색상 배열 정의
+    let index = 0; // 현재 색상 배열의 인덱스
+
+    // heading 요소를 클릭했을 때 실행될 함수 재정의
+    heading.onclick = function () {
+        heading.style.color = colors[index]; // 현재 인덱스의 색상으로 변경
+        index = (index + 1) % colors.length; // 인덱스를 다음으로 이동, 배열의 길이를 넘어가면 0으로
+        // 처음엔 index = 0
+        // 동작 설명:
+        // 처음 클릭(index = 0): heading의 색상이 colors[0](red)로 변경되고, index는 1이 됩니다.
+        // 두 번째 클릭(index = 1): heading의 색상이 colors[1](green)로 변경되고, index는 2가 됩니다.
+        // 세 번째 클릭(index = 2): heading의 색상이 colors[2](blue)로 변경되고, index는 3이 됩니다.
+        // 네 번째 클릭(index = 3): heading의 색상이 colors[3](purple)로 변경되고, index는 4가 됩니다.
+        // 다섯 번째 클릭(index = 4): heading의 색상이 colors[4](orange)로 변경되고, index는 (4 + 1) % 5 = 0이 됩니다.
+        // 즉 여기서의 index 값은 클릭 시 반열 될 값을 가지고 있다고 보면 된다.
+        console.log(index);
+    }
+</script>
 </body>
 </html>

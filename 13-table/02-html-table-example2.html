@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Table Example</title>
+    <style>
+        table {
+            border: 1px solid #3a4bb9;
+        }
+        td, th {
+            width: 200px;
+            /* height: 100px; 높이 설정을 주석 처리하여 동적 조정 가능 */
+            border: 1px solid #45a049;
+        }
+    </style>
+</head>
+<body>
+<!-- 표는 웹 페이지에서 자료를 정리할 때 자주 사용하는 요소.
+    실제는 게시판이나 회원 가입 페이지의 레이아웃을 만드는 데 주로 사용.
+    기본적으로 몇 줄(=행) 몇 칸(=열)으로 구성됨.
+    표를 이용한 형태를 만들 때 사용하는 태그:
+
+    * table 구조
+    table > tr > td
+    칸의 기본적인 성격은 y축 상의 middle
+
+    * table 관련 태그
+    table : table 전체를 감싸는 태그
+
+    - tr ("table row") : 테이블의 행을 의미하는 태그. 자손으로 th나 td가 반드시 있어야 함.
+    - td ("table data") : 테이블의 일반 셀(칸)을 의미하는 태그. 부모인 tr 안에 있어야 함.
+        - 기본 스타일 : 왼쪽 정렬 (text-align:left)
+
+    - th ("table header") : 테이블의 제목 셀(칸)을 의미하는 태그. 부모인 tr 안에 있어야 함.
+        - 기본 스타일 : 중앙 정렬 (text-align:center), 두껍게(font-weight:bold)
+-->
+<!-- 표의 시작 -->
+<table>
+    <!-- 첫 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (제목 셀) -->
+        <th>제목1</th>
+        <!-- 두 번째 열 (제목 셀) -->
+        <th>제목2</th>
+    </tr>
+    <!-- 두 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (내용 셀) -->
+        <td>내용1</td>
+        <!-- 두 번째 열 (내용 셀) -->
+        <td>내용2</td>
+    </tr>
+    <!-- 세 번째 행의 시작 -->
+    <tr>
+        <!-- 첫 번째 열 (내용 셀) -->
+        <td>내용3</td>
+        <!-- 두 번째 열 (내용 셀) -->
+        <td>내용4</td>
+    </tr>
+</table>
+</body>
+</html>

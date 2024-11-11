@@ -7,45 +7,43 @@
         /*
          * 자료형 변환
          */
+
+        // 숫자 자료형을 문자 자료형으로 변환
         var number = 100;
-        console.log(typeof(number)); // number
+        console.log(typeof (number)); // 'number' 출력
+        number = String(number); // 숫자 자료형을 문자열 자료형으로 변환
+        console.log(typeof (number)); // 'string' 출력
+        console.log(number); // '100' 출력
 
-        number = String(number); // 숫자 자료형을 문자 자료형으로 변환
-        console.log(typeof(number)); // string
-        console.log(number) // 100
+        // 숫자 자료형을 불 자료형으로 변환
+        var number = 200; // var의 경우에는 중복 선언이 가능하다. 이전 것이 무효화된다.
+        console.log(typeof (number)); // 'number' 출력
+        console.log(number); // 200 출력
+        number = Boolean(number); // 숫자 자료형을 불 자료형으로 변환
+        console.log(typeof (number)); // 'boolean' 출력
+        console.log(number); // true 출력 (0이 아닌 숫자는 true)
 
-        // 불 자료형으로 변환하기 : Boolean() 함수 사용
-        var number = 200; // var의 경우에는 중복 선언이 가능하다. 이전 것이 무효화 된다.
-        console.log(typeof(number)); // number
-        console.log(number) // 200
-
-        number = Boolean(number);
-        console.log(typeof(number)); // boolean
-        console.log(number); // true <-- 0이 아닌 숫자라서 true
-
+        // 숫자 0을 불 자료형으로 변환
         let num = 0;
-        console.log(typeof(num)); // number
-        console.log(num)
+        console.log(typeof (num)); // 'number' 출력
+        console.log(num); // 0 출력
+        num = Boolean(num); // 숫자 0을 불 자료형으로 변환
+        console.log(typeof (num)); // 'boolean' 출력
+        console.log(num); // false 출력 (0은 false로 반환)
 
-        num = Boolean(num);
-        console.log(typeof(num)); // boolean
-        console.log(num); // false. 0은 false 로 반환.
-
-        // 문자열을 불린으로 형변환. 빈 문자열은 false, 나머지는 true
+        // 문자열을 불 자료형으로 변환
         let string2 = 'hello';
-        console.log(typeof(string2)); // string
-        console.log('개카')
-        string2 = Boolean(string2);
-        console.log(typeof(string2)); // boolean
-        console.log(string2); // true
+        console.log(typeof (string2)); // 'string' 출력
+        console.log(string2); // 'hello' 출력
+        string2 = Boolean(string2); // 문자열을 불 자료형으로 변환
+        console.log(typeof (string2)); // 'boolean' 출력
+        console.log(string2); // true 출력 (빈 문자열이 아니므로 true)
 
         let string3 = '';
-        console.log(typeof(string3)); // string
-
-        string3 = Boolean(string3);
-        console.log(typeof(string3)); // boolean
-        console.log(string3); // false
-
+        console.log(typeof (string3)); // 'string' 출력
+        string3 = Boolean(string3); // 빈 문자열을 불 자료형으로 변환
+        console.log(typeof (string3)); // 'boolean' 출력
+        console.log(string3); // false 출력 (빈 문자열은 false)
     </script>
 </head>
 <body>

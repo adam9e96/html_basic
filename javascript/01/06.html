@@ -2,15 +2,26 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>현재 시각 표시</title>
 </head>
 <body>
+<h1>현재 시각을 확인하세요.</h1>
 <script>
     /* body 영역에서도 사용 가능 */
     let now = new Date(); // 객체 생성
     let display = now.toLocaleTimeString(); // 메서드 실행
-    document.write("현재 시각은 " + display); // document.write : 웹 브라우저 화면에 출력
-    // console.log(`${}`)
+    let display2 = new Date().toLocaleTimeString();
+
+
+    // document.write : 웹 브라우저 화면에 출력
+    document.write("현재 시각은 " + display);
+    document.write("<br>")
+    document.write("현재 시각은 " + display2);
+
+
+    // console.log : 콘솔에 출력
+    console.log(`현재 시각은 ${display}`);
+    console.log(`현재 시각은 ${display2}`);
 </script>
 </body>
 </html>

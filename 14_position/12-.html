@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>중앙 정렬 예제 2</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 700px;
+      height: 500px;
+      border: 2px solid gray;
+      background-color: lightgreen;
+      position: relative;
+      margin: 50px auto; /* 중앙 정렬을 위한 부모 요소의 가운데 배치 */
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+      position: absolute;
+    }
+
+    .box1 {
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+    }
+
+    .box2 {
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+    }
+
+    .box3 {
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="box box1">Box 1</div>
+  <div class="box box2">Box 2</div>
+  <div class="box box3">Box 3</div>
+</div>
+</body>
+</html>

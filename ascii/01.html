@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Table</title>
+    <style>
+        /* Nord color palette */
+        :root {
+            --nord0: #2E3440;  /* Dark Background */
+            --nord1: #3B4252;  /* Darker Shade */
+            --nord2: #434C5E;  /* Medium Dark */
+            --nord3: #4C566A;  /* Medium */
+            --nord4: #D8DEE9;  /* Light Text */
+            --nord5: #E5E9F0;  /* Lighter Text */
+            --nord6: #ECEFF4;  /* Lightest Text */
+            --nord7: #8FBCBB;  /* Aqua/Cyan */
+            --nord8: #88C0D0;  /* Light Cyan */
+            --nord9: #81A1C1;  /* Light Blue */
+            --nord10: #5E81AC; /* Dark Blue */
+            --nord11: #BF616A; /* Red */
+            --nord12: #D08770; /* Orange */
+            --nord13: #EBCB8B; /* Yellow */
+            --nord14: #A3BE8C; /* Green */
+            --nord15: #B48EAD; /* Purple */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--nord0);
+            color: var(--nord4);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--nord7);
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 1px solid var(--nord2);
+            border-radius: 15px;
+            overflow: hidden; /* 테두리 둥글게 적용 시 테두리 안쪽에 내용이 잘리는 현상 방지 */
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid var(--nord2);
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--nord3);
+            color: var(--nord6);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--nord1);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--nord2);
+        }
+
+        tr:hover {
+            background-color: var(--nord9);
+            color: var(--nord0);
+        }
+    </style>
+</head>
+<body>
+<h1>ASCII Table</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Char</th>
+        <th>ASCII Code</th>
+        <th>Description</th>
+        <th>Char</th>
+        <th>ASCII Code</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>[NUL]</td><td>0</td><td>Null</td><td>[Space]</td><td>32</td><td>Space</td></tr>
+    <tr><td>[SOH]</td><td>1</td><td>Start of Heading</td><td>!</td><td>33</td><td>Exclamation Mark</td></tr>
+    <tr><td>[STX]</td><td>2</td><td>Start of Text</td><td>"</td><td>34</td><td>Double Quote</td></tr>
+    <tr><td>[ETX]</td><td>3</td><td>End of Text</td><td>#</td><td>35</td><td>Hash</td></tr>
+    <tr><td>[EOT]</td><td>4</td><td>End of Transmission</td><td>$</td><td>36</td><td>Dollar Sign</td></tr>
+    <tr><td>[ENQ]</td><td>5</td><td>Enquiry</td><td>%</td><td>37</td><td>Percent</td></tr>
+    <tr><td>[ACK]</td><td>6</td><td>Acknowledge</td><td>&</td><td>38</td><td>Ampersand</td></tr>
+    <tr><td>[BEL]</td><td>7</td><td>Bell</td><td>'</td><td>39</td><td>Single Quote</td></tr>
+    <tr><td>[BS]</td><td>8</td><td>Backspace</td><td>(</td><td>40</td><td>Left Parenthesis</td></tr>
+    <tr><td>[HT]</td><td>9</td><td>Horizontal Tab</td><td>)</td><td>41</td><td>Right Parenthesis</td></tr>
+    <tr><td>[LF]</td><td>10</td><td>Line Feed</td><td>*</td><td>42</td><td>Asterisk</td></tr>
+    <tr><td>[VT]</td><td>11</td><td>Vertical Tab</td><td>+</td><td>43</td><td>Plus</td></tr>
+    <tr><td>[FF]</td><td>12</td><td>Form Feed</td><td>,</td><td>44</td><td>Comma</td></tr>
+    <tr><td>[CR]</td><td>13</td><td>Carriage Return</td><td>-</td><td>45</td><td>Hyphen</td></tr>
+    <tr><td>[SO]</td><td>14</td><td>Shift Out</td><td>.</td><td>46</td><td>Period</td></tr>
+    <tr><td>[SI]</td><td>15</td><td>Shift In</td><td>/</td><td>47</td><td>Slash</td></tr>
+    <tr><td>[DLE]</td><td>16</td><td>Data Link Escape</td><td>0</td><td>48</td><td>Digit 0</td></tr>
+    <tr><td>[DC1]</td><td>17</td><td>Device Control 1</td><td>1</td><td>49</td><td>Digit 1</td></tr>
+    <tr><td>[DC2]</td><td>18</td><td>Device Control 2</td><td>2</td><td>50</td><td>Digit 2</td></tr>
+    <tr><td>[DC3]</td><td>19</td><td>Device Control 3</td><td>3</td><td>51</td><td>Digit 3</td></tr>
+    <tr><td>[DC4]</td><td>20</td><td>Device Control 4</td><td>4</td><td>52</td><td>Digit 4</td></tr>
+    <tr><td>[NAK]</td><td>21</td><td>Negative Acknowledge</td><td>5</td><td>53</td><td>Digit 5</td></tr>
+    <tr><td>[SYN]</td><td>22</td><td>Synchronous Idle</td><td>6</td><td>54</td><td>Digit 6</td></tr>
+    <tr><td>[ETB]</td><td>23</td><td>End of Trans. Block</td><td>7</td><td>55</td><td>Digit 7</td></tr>
+    <tr><td>[CAN]</td><td>24</td><td>Cancel</td><td>8</td><td>56</td><td>Digit 8</td></tr>
+    <tr><td>[EM]</td><td>25</td><td>End of Medium</td><td>9</td><td>57</td><td>Digit 9</td></tr>
+    <tr><td>[SUB]</td><td>26</td><td>Substitute</td><td>:</td><td>58</td><td>Colon</td></tr>
+    <tr><td>[ESC]</td><td>27</td><td>Escape</td><td>;</td><td>59</td><td>Semicolon</td></tr>
+    <tr><td>[FS]</td><td>28</td><td>File Separator</td><td><</td><td>60</td><td>Less Than</td></tr>
+    <tr><td>[GS]</td><td>29</td><td>Group Separator</td><td>=</td><td>61</td><td>Equals</td></tr>
+    <tr><td>[RS]</td><td>30</td><td>Record Separator</td><td>></td><td>62</td><td>Greater Than</td></tr>
+    <tr><td>[US]</td><td>31</td><td>Unit Separator</td><td>?</td><td>63</td><td>Question Mark</td></tr>
+    <tr><td>@</td><td>64</td><td>At Symbol</td><td>`</td><td>96</td><td>Grave Accent</td></tr>
+    <tr><td>A</td><td>65</td><td>Uppercase A</td><td>a</td><td>97</td><td>Lowercase a</td></tr>
+    <tr><td>B</td><td>66</td><td>Uppercase B</td><td>b</td><td>98</td><td>Lowercase b</td></tr>
+    <tr><td>C</td><td>67</td><td>Uppercase C</td><td>c</td><td>99</td><td>Lowercase c</td></tr>
+    <tr><td>D</td><td>68</td><td>Uppercase D</td><td>d</td><td>100</td><td>Lowercase d</td></tr>
+    <tr><td>E</td><td>69</td><td>Uppercase E</td><td>e</td><td>101</td><td>Lowercase e</td></tr>
+    <tr><td>F</td><td>70</td><td>Uppercase F</td><td>f</td><td>102</td><td>Lowercase f</td></tr>
+    <tr><td>G</td><td>71</td><td>Uppercase G</td><td>g</td><td>103</td><td>Lowercase g</td></tr>
+    <tr><td>H</td><td>72</td><td>Uppercase H</td><td>h</td><td>104</td><td>Lowercase h</td></tr>
+    <tr><td>I</td><td>73</td><td>Uppercase I</td><td>i</td><td>105</td><td>Lowercase i</td></tr>
+    <tr><td>J</td><td>74</td><td>Uppercase J</td><td>j</td><td>106</td><td>Lowercase j</td></tr>
+    <tr><td>K</td><td>75</td><td>Uppercase K</td><td>k</td><td>107</td><td>Lowercase k</td></tr>
+    <tr><td>L</td><td>76</td><td>Uppercase L</td><td>l</td><td>108</td><td>Lowercase l</td></tr>
+    <tr><td>M</td><td>77</td><td>Uppercase M</td><td>m</td><td>109</td><td>Lowercase m</td></tr>
+    <tr><td>N</td><td>78</td><td>Uppercase N</td><td>n</td><td>110</td><td>Lowercase n</td></tr>
+    <tr><td>O</td><td>79</td><td>Uppercase O</td><td>o</td><td>111</td><td>Lowercase o</td></tr>
+    <tr><td>P</td><td>80</td><td>Uppercase P</td><td>p</td><td>112</td><td>Lowercase p</td></tr>
+    <tr><td>Q</td><td>81</td><td>Uppercase Q</td><td>q</td><td>113</td><td>Lowercase q</td></tr>
+    <tr><td>R</td><td>82</td><td>Uppercase R</td><td>r</td><td>114</td><td>Lowercase r</td></tr>
+    <tr><td>S</td><td>83</td><td>Uppercase S</td><td>s</td><td>115</td><td>Lowercase s</td></tr>
+    <tr><td>T</td><td>84</td><td>Uppercase T</td><td>t</td><td>116</td><td>Lowercase t</td></tr>
+    <tr><td>U</td><td>85</td><td>Uppercase U</td><td>u</td><td>117</td><td>Lowercase u</td></tr>
+    <tr><td>V</td><td>86</td><td>Uppercase V</td><td>v</td><td>118</td><td>Lowercase v</td></tr>
+    <tr><td>W</td><td>87</td><td>Uppercase W</td><td>w</td><td>119</td><td>Lowercase w</td></tr>
+    <tr><td>X</td><td>88</td><td>Uppercase X</td><td>x</td><td>120</td><td>Lowercase x</td></tr>
+    <tr><td>Y</td><td>89</td><td>Uppercase Y</td><td>y</td><td>121</td><td>Lowercase y</td></tr>
+    <tr><td>Z</td><td>90</td><td>Uppercase Z</td><td>z</td><td>122</td><td>Lowercase z</td></tr>
+    <tr><td>[</td><td>91</td><td>Left Square Bracket</td><td>{</td><td>123</td><td>Left Curly Brace</td></tr>
+    <tr><td>\</td><td>92</td><td>Backslash</td><td>|</td><td>124</td><td>Vertical Bar</td></tr>
+    <tr><td>]</td><td>93</td><td>Right Square Bracket</td><td>}</td><td>125</td><td>Right Curly Brace</td></tr>
+    <tr><td>^</td><td>94</td><td>Caret</td><td>~</td><td>126</td><td>Tilde</td></tr>
+    <tr><td>_</td><td>95</td><td>Underscore</td><td>[DEL]</td><td>127</td><td>Delete</td></tr>
+    </tbody>
+</table>
+</body>
+</html>

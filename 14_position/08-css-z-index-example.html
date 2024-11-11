@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>z-index 예제</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+    .box1 {
+      background-color: red;
+      left: 50px;
+      top: 50px;
+      z-index: 1;
+    }
+    .box2 {
+      background-color: blue;
+      left: 100px;
+      top: 100px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+<div class="box box1">Box 1</div>
+<div class="box box2">Box 2</div>
+</body>
+</html>
