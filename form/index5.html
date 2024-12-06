@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>새 계정 생성</title>
+</head>
+<body>
+<h1>새 계정 생성</h1>
+<form th:action="@{/createAccount}" th:object="${accountForm}" method="post" enctype="multipart/form-data">
+  <p>이름: <input type="text" th:field="*{name}"/></p>
+  <p>전화번호: <input type="text" th:field="*{phone}"/></p>
+  <p>주소: <input type="text" th:field="*{address}"/></p>
+  <p>개인정보 동의:
+    <input type="checkbox" th:field="*{privacyAgreement}"/> 동의합니다
+  </p>
+  <p>사진 업로드: <input type="file" name="photo"/></p>
+  <p>
+    <button type="submit">제출</button>
+  </p>
+</form>
+</body>
+</html>

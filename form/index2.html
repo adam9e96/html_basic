@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>폼 데이터 전송 예제</title>
+</head>
+<body>
+
+<h2>폼 데이터 전송 예제</h2>
+<h3>온라인 API를 사용하며 폼 데이터 전송하기</h3>
+<form id="myForm">
+    <label for="name">이름:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">이메일:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+    <input type="submit" value="전송">
+</form>
+
+<h3>서버 응답:</h3>
+<pre id="response"></pre>
+
+<script>
+    "use strict";
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        // FormData를 JSON 객체로 변환
+        const jsonObject = {};
+        formData.forEach(function (value, key) {
+            jsonObject[key] = value;
+        });
+
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonObject)
+        })
+            .then(response => response.json())
+            .then(json => {
+                document.getElementById('response').textContent = JSON.stringify(json, null, 2);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+
+</body>
+</html>
