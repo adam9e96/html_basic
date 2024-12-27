@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>재밌는 JS 불꽃놀이</title>
+    <style>
+        /* 화면 여백 없애고, 배경색을 검정으로 설정 */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!-- 불꽃 효과를 그릴 캔버스 -->
+<canvas id="fireworksCanvas"></canvas>
+
+<script>
+    // 캔버스와 2D 컨텍스트 가져오기
+    const canvas = document.getElementById('fireworksCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 화면 크기에 맞춰 캔버스 사이즈 조절
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // 불꽃 하나(입자 여러 개를 담는 클래스)
+    class Firework {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.particles = [];
+
+            // 파티클 여러 개를 생성하여 불꽃 객체에 담기
+            for (let i = 0; i < 50; i++) {
+                this.particles.push(new Particle(this.x, this.y));
+            }
+        }
+
+        update() {
+            // 각 파티클을 업데이트하면서 수명이 다한 파티클은 배열에서 제거
+            for (let i = this.particles.length - 1; i >= 0; i--) {
+                this.particles[i].update();
+                if (this.particles[i].life <= 0) {
+                    this.particles.splice(i, 1);
+                }
+            }
+        }
+
+        draw() {
+            // 각 파티클을 그려준다
+            this.particles.forEach((particle) => particle.draw(ctx));
+        }
+    }
+
+    // 불꽃 하나를 이루는 파티클(입자) 클래스
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            // 파티클이 퍼져나가는 속도와 각도 랜덤 설정
+            this.speed = Math.random() * 5 + 2;
+            this.angle = Math.random() * 2 * Math.PI;
+            // 속도를 x, y 벡터로 변환
+            this.vx = Math.cos(this.angle) * this.speed;
+            this.vy = Math.sin(this.angle) * this.speed;
+            // 파티클이 화면에 남아있는 수명 (여기서는 60~90 정도)
+            this.life = 60 + Math.random() * 30;
+            // 불꽃 색깔 랜덤
+            this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+
+        update() {
+            // 속도만큼 위치 업데이트
+            this.x += this.vx;
+            this.y += this.vy;
+            // 간단한 중력 효과
+            this.vy += 0.02;
+            // 수명 감소
+            this.life--;
+        }
+
+        draw(ctx) {
+            // 합성 모드 변경(불투명 픽셀을 밝게 겹치도록)
+            ctx.globalCompositeOperation = 'lighter';
+
+            // 파티클(작은 원)을 그린다
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 3, 0, 2 * Math.PI);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
+    // 실제로 그려질 불꽃 객체들을 담는 배열
+    const fireworks = [];
+
+    // 마우스 클릭 시 해당 위치에서 새로운 불꽃을 생성
+    window.addEventListener('click', (e) => {
+        fireworks.push(new Firework(e.clientX, e.clientY));
+    });
+
+    // 매 프레임마다 실행되는 애니메이션 함수
+    function animate() {
+        requestAnimationFrame(animate);
+        // 이전 프레임 잔상을 지우기
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 불꽃들을 업데이트하고 그리기
+        fireworks.forEach((firework, idx) => {
+            firework.update();
+            firework.draw();
+            // 파티클이 다 사라진 불꽃은 배열에서 제거
+            if (firework.particles.length <= 0) {
+                fireworks.splice(idx, 1);
+            }
+        });
+    }
+    animate();
+</script>
+</body>
+</html>
